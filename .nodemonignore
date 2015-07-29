@@ -1,0 +1,6 @@
+client/
+public/
+views/
+sass/
+node_modules/
+.sass-cache/

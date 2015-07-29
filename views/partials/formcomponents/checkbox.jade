@@ -1,0 +1,7 @@
+mixin input-checkbox(name, options, label, value)
+    if label
+        .form--element-label= label
+    each val, key in options
+        label.form--element.form--element-checkbox
+            input.form--element-control(type="checkbox", name=name, value=key, checked=(value == key ? true : false))
+            .form--element-value=val

@@ -1,0 +1,106 @@
+extends /layouts/auth_base
+
+block content
+  main
+    section
+      .dashboard--options
+        .dashboard--actions
+          a.button.button--action.button--icon.newsurvey(href='/dashboard/new').dashboard--actions-item
+            i.fa.fa-fw.fa-plus
+            | New Survey
+          .dropdown.dropdown-left.dashboard--actions-item
+            .dropdown--menu-parent.button.button--icon Actions
+            .dropdown--menu
+                a.button--mark-active.dropdown--menu-item Mark as active
+                a.button--mark-inactive.dropdown--menu-item Mark as inactive
+        .dashboard--search
+          form
+            input(type="hidden", name="all", value=(showAll ? 1 : 0))
+            .dashboard--search-icon
+              i.fa.fa-search
+            input(name="q", type="text", placeholder="Filter by name...", value=q)
+      table.table--list.sortable.dashboard--table
+        thead
+          tr
+            th.table--checkbox
+              .form--element.form--element-checkbox
+                input.form--element-control(type="checkbox")#select-all
+                .form--element-value
+            th(class=(sortKey == "title" ? "sorting-no-icon sorting-" + sortDirection : ""), data-sort-key="title") Survey
+            th(class=(sortKey == "responseCount" ? "sorting-no-icon sorting-" + sortDirection : ""), data-sort-key="responseCount") Responses
+            th(class=(sortKey == "score" ? "sorting-no-icon sorting-" + sortDirection : ""), data-sort-key="score") Score
+            th(class=(sortKey == "createdAt" ? "sorting-no-icon sorting-" + sortDirection : ""), data-sort-key="createdAt") Created
+            if user.hasRole( 'admin' )
+              th Creator
+              th Organization
+            th(class=(sortKey == "lastUpdate" ? "sorting-no-icon sorting-" + sortDirection : ""), data-sort-key="lastUpdate") Last Updated
+        tbody
+          if surveyList.length
+            each survey in surveyList
+              - var surveyUser = survey.users.filter(function(u) { return u.user == user.id; });
+              tr(data-key=survey.key, class=[(!survey.responseCount ? 'survey no-responses' : 'survey'), (surveyUser.length && !surveyUser[0].active ? 'inactive' : '')].join( ' ' ))
+                td.table--checkbox
+                  label.form--element.form--element-checkbox
+                    input.form--element-control(type="checkbox")
+                    .form--element-value
+                td
+                  div.table--title= survey.title
+                  div.table--links
+                    a.link-action.link-action-gray(href='/view/' + survey.key) Dashboard
+                    |  &middot; 
+                    a.link-action.link-action-gray(href="/survey/" + survey.key) Questionnaire
+                td.table-responseCount
+                  span.responseCount= numberWithCommas(survey.responseCount)
+                  span.mobile-label= ' Response' + (survey.responseCount == 1 ? '' : 's')
+                td.table-scores
+                  span.scores
+                    = Math.round( survey.score * 100 )
+                    | %
+                  span.mobile-label  Score
+                td.table-date(data-sort-value = survey.createdAt ? moment(survey.createdAt).unix() : 0, title = survey.createdAt ? moment(survey.createdAt).format('MMMM Do, YYYY') : 'Never')
+                  span.mobile-label= 'Created '
+                  span=survey.createdAt ? moment(survey.createdAt).fromNow() : '—'
+                if user.hasRole( 'admin' )
+                  td= survey.creator && survey.creator.profile ? survey.creator.profile.name : '—'
+                  td= survey.creator && survey.creator.profile ? survey.creator.profile.organization : '—'
+                td.table-date(data-sort-value = survey.lastUpdate ? moment(survey.lastUpdate).unix() : 0, title = survey.lastUpdate ? moment(survey.lastUpdate).format('MMMM Do, YYYY') : 'Never')
+                  span.mobile-label= 'Last Updated '
+                  span=survey.lastUpdate ? moment(survey.lastUpdate).fromNow() : '—'
+              if !survey.responseCount
+                tr(class=['no-responses-text', (surveyUser.length && !surveyUser[0].active ? 'inactive' : '')])
+                  td(colspan=(user.hasRole('admin') ? 8 : 6))
+                    | No responses yet! Share this survey at 
+                    a(href=baseUrl + "/survey/" + survey.key)=baseUrl + "/survey/" + survey.key
+          else
+            tr(class='no-responses-text')
+              td
+              - var cols = user.hasRole( 'admin' ) ? 7 : 5;
+              td.table--list-empty(colspan=cols) You haven't created any surveys yet... <a class="table--list-empty-link" href="/dashboard/new">create one now</a>.
+      .dashboard-pagination
+        if typeof showAll !== 'undefined'
+          .dashboard-pagination--info
+            | <span class="mobile-hide-label">Currently viewing </span>#{showAll ? 'all' : 'active'} surveys
+            | &middot; 
+            if !showAll
+              a.link-action(href="?all=1") <span class="mobile-hide-label">include </span>inactive surveys
+            else
+              a.link-action(href="?all=0") <span class="mobile-hide-label">only </span>active surveys
+        .dashboard-pagination-control
+            .progress-pagination
+                .progress-pagination-first
+                    a(href="?all=" + (showAll ? 1 : 0) + "&sort=" + sortKey + "&dir=" + sortDirection + "&page=1") First
+                .progress-pagination-last
+                    a(href="?all=" + (showAll ? 1 : 0) + "&sort=" + sortKey + "&dir=" + sortDirection + "&page=" + totalPages) Last
+                .progress-pagination-center
+                    if (page == 1)
+                      span.pagination-link &larr; Prev
+                    else
+                      a.pagination-link(href="?all=" + (showAll ? 1 : 0) + "&sort=" + sortKey + "&dir=" + sortDirection + "&page=" + (page - 1)) &larr; Prev
+                    span="Page " + page + " of " + totalPages
+                    if (page == totalPages)
+                      span.pagination-link Next &rarr;
+                    else
+                      a.pagination-link(href="?all=" + (showAll ? 1 : 0) + "&sort=" + sortKey + "&dir=" + sortDirection + "&page=" + (page + 1)) Next &rarr;
+
+append scripts
+  script(src="/js/admin.js")

@@ -1,0 +1,30 @@
+extends layouts/base
+include partials/formcomponents
+
+block content
+  main
+    section
+      .row
+        .card.card-full
+          .card-body
+            +progress(page, totalPages, null, 'Welcome')
+            form.form--group.form(method="post")
+              .form--group
+                if welcomeMessage
+                  p!= welcomeMessage
+                else
+                  p Today's largest and most important organizations face two critical challenges: First, the world around them is changing faster than ever, and second, their own scale and complexity are working against them. To be successful in the future, we, as other organizations, need to strive to become more responsive – responsive to our customers, culture, competition, technology, regulation, and all other forces of disruption.
+                  p
+                    | To help us think about the future in a careful, deliberate way as we map out our vision for the future, we’re administering a brief survey to determine how responsive we are as an organization today. We think of it as taking our company’s ‘pulse.’
+                    strong  The survey is fully anonymous
+                    |  and will help us understand our strengths, biases, values, capabilities, and patterns of working.
+                  p
+                    | Our understanding requires everyone’s participation and honest input. So please participate,
+                    em  it only takes five minutes to complete.
+              .form--group
+                input(type="hidden", name="_csrf", value=csrfToken)
+                button.button.button--primary(type="submit") Begin
+            +progress(page, totalPages, true)
+
+append scripts
+  script(src="/js/form.js")

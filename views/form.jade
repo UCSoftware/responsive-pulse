@@ -1,0 +1,47 @@
+extends layouts/base
+include partials/formcomponents
+
+block content
+  main
+    section
+      .row
+        .card.card-full
+          .card-body
+            +progress(page, totalPages)
+            .card-intro!= template.header || ''
+            form.form--group.form(method="post")
+              for field in template.fields
+                .form--group
+                  case field.type
+                    when "text"
+                      +input-text(field.name, field.placeholder, form[ field.name ] || field.default || '', fillIn(field.label, surveyValues), false, true)(required="")
+                    when "textarea"
+                      +input-textarea(field.name, field.placeholder, form[ field.name ] || field.default || '', fillIn(field.label, surveyValues))
+                    when "email"
+                      +input-email(field.name, field.placeholder, form[ field.name ] || field.default || '', fillIn(field.label, surveyValues))(required="")
+                    when "radio"
+                      +input-radio(field.name, field.options, fillIn(field.label, surveyValues), form[ field.name ])(required="")
+                    when "select"
+                      +input-select(field.name, field.options, fillIn(field.label, surveyValues), form[ field.name ], true)
+                    when "teamselect"
+                      +input-teamselect(field.name, teams, fillIn(field.label, surveyValues), form[ field.name ])
+                    when "checkbox"
+                      if field.options
+                        +input-checkbox(field.name, field.options, fillIn(field.label, surveyValues), form[ field.name ])
+                      else
+                        +input-single-checkbox(field.name, field.value || '1', fillIn(field.label, surveyValues), form[ field.name ])
+                    when "gridselect"
+                      +input-gridselect(field.name, field.options, form)(required="")
+                    when "slider"
+                      +input-slider(field.name, fillIn(field.label, surveyValues), field.min.value, field.max.value, field.min.label, field.max.label, form[ field.name ], true)
+                    default
+                      .form--element-label Not yet implemented.
+              .form--group
+                input(type="hidden", name="_csrf", value=csrfToken)
+                if page > 1
+                  a(href="./" + (page - 1)).button Back
+                button.button.button--primary(type="submit")= (page == totalPages ? 'Submit' : 'Next')
+            +progress(page, totalPages, true)
+
+append scripts
+  script(src="/js/form.js")

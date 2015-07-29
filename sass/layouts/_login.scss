@@ -1,0 +1,35 @@
+.auth--form {
+    width: 24rem;
+    margin: 0 auto;
+    background: $white;
+    padding: 1rem;
+}
+
+.login--forgot {
+    display: block;
+    margin-top: 0.5em;
+    color: $gray-light;
+
+    &:hover {
+        color: darken($gray-light, 15%);
+    }
+}
+
+.login--submit {
+    width: 100%;
+}
+
+.login--signup {
+    text-align: center;
+    color: $gray-light;
+    margin-top: 1rem;
+
+    a {
+        color: $blue;
+
+        &:hover {
+            color: darken($blue, 15%);
+        }
+    }
+
+}

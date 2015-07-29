@@ -1,0 +1,91 @@
+extends /layouts/auth_base
+include /partials/modal
+include /survey/header
+
+block content
+  +modal('modal--share')
+    include /partials/modals/share
+
+  main
+      section
+        +header
+          .results--nav-menu
+            if typeof survey !== 'undefined' && survey.responseCount
+              a.results--nav-menu-item(href='/view/' + survey.key, class=is(['/view/' + survey.key + '$', 'is-active']))
+                i.fa.fa-bookmark
+                | Overview
+              a.results--nav-menu-item(href='/view/' + survey.key + "/detail", class=is(['/view/' + survey.key + '/detail', 'is-active']))
+                i.fa.fa-bar-chart
+                | Detailed Results
+        .ovw-container
+          if typeof survey !== 'undefined' && survey.responseCount
+            .g--row.structure--section
+              .ovw-card-rowHeader.sticky-header: span Structure
+              .g--full.structure--filter-team
+                span Filter by team: 
+                select.filter(data-col='team', data-min-value='2')
+                  option(value='', disabled) Loading...
+              .g--third
+                h2.chart--title Hierarchy
+                .chart.stacked(data-title='Hierarchy',
+                              data-height='225',
+                              data-col='management_layers',
+                              data-y-label='Layers beneath leadership')
+                  .data-placeholder--box
+              .g--third
+                h2.chart--title Position &amp; Traction
+                .chart.matrixplot(data-height='225', data-title='Position vs. Traction'
+                                  data-col-x='org_position', data-col-y='org_traction',
+                                  data-x-values='following,leading', data-y-values='advancing,declining',
+                                  data-x-labels='Following,Leading', data-y-labels='Advancing,Declining')
+                  .data-placeholder--box
+              .g--third.g--last
+                h2.chart--title Tenure
+                .chart.bar.tenure(data-title='Tenure',
+                                  data-height='225',
+                                  data-col='org_years',
+                                  data-x-label='in years',
+                                  filterable='')
+                  .data-placeholder--box
+            .g--row
+              .ovw-card-rowHeader.sticky-header: span Score Breakdown
+              .chart.table.responsiveness.table--responsiveness
+                .data-placeholder--box
+            for domain in ['Purpose e/o Profit', 'Empowering e/o Controlling', 'Emergence e/o Planning', 'Networks e/o Hierarchies', 'Adaptivity e/o Efficiency', 'Transparency e/o Privacy']
+              .results--section(id=domain.replace(/[^a-z0-9]/gi, '-'))
+                .ovw-card-rowHeader.sticky-header: span= domain
+                .g--row
+                  .g--half
+                    h2.chart--title Highest Agreement
+                    .legend
+                      .legend-item.leadership Leadership
+                      .legend-item.team Team
+                      .legend-item.agreement Leadership &amp; Team Agree
+                    .chart.numberline.agreement(data-domain=domain)
+                      .data-placeholder--box.data-placeholder--third
+                      .data-placeholder--err Not enough data.
+                  .g--half.g--last
+                    h2.chart--title Highest Disagreement
+                    .card-data
+                      .legend
+                        .legend-item.leadership Leadership
+                        .legend-item.team Team
+                      .chart.numberline.disagreement(data-domain=domain)
+                        .data-placeholder--box.data-placeholder--third
+                        .data-placeholder--err Not enough data.
+                .g--row
+                  h2.chart--title Verbatims
+                  .verbatims(data-domain=domain)
+                    .verbatims--show-more
+                      | Show Verbatims (
+                      span 0
+                      | )
+                    .verbatims--show-less Hide Verbatims
+                    ol.verbatims--list
+          else
+            .g--row
+              .g--full.no-responses
+                h2 Waiting for responses…
+                h3
+                  a(href='/about') Learn more
+                  |  about Responsive OS.

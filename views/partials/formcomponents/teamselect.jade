@@ -1,0 +1,17 @@
+mixin input-teamselect(name, teams, label, value)
+    .form--area.form--area-stacked
+        if !teams || teams.length === 0
+            label.form--element.form--element-text.form--element-text-stacked.form--element-teamselect
+                if label
+                    .form--element-label= label
+                input(type="text", name="team").form--element-control
+        else
+            label.form--element.form--element-teamselect
+                if label
+                    .form--element-label= label
+                select.form--element-control(name="team")&attributes(attributes).teamselect--dropdown.is-shown
+                    each val in teams
+                        option(value=val, selected=((messages.field && messages.field[0][name] == val) || (value && value == val) ? true : false))=val
+                    option(value="-" disabled) -------------
+                    option(value="newteam") Add Team
+                input(type="text").form--element-control.teamselect--text

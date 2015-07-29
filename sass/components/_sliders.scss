@@ -1,0 +1,100 @@
+input[type="range"] {
+    opacity: 0;
+    height: 59px;
+}
+
+.rangeslider,
+.rangeslider__fill {
+    background: $gray-lighter;
+    display: inline-block;
+    height: 6px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.rangeslider {
+    position: relative;
+    margin: 35px 0 20px;
+}
+
+.rangeslider--disabled {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+    opacity: 0.4;
+}
+
+.rangeslider__fill {
+    background: $blue;
+    position: absolute;
+    top: 0;
+}
+
+.rangeslider__handle {
+    background: $blue;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -16px;
+    background-image: linear-gradient(lighten($blue, 10%), $blue);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    cursor: ew-resize;
+}
+
+.rangeslider__handle:hover {
+    background-image: linear-gradient(lighten($blue, 15%), lighten($blue, 5%));
+}
+
+.rangeslider__handle:active {
+    background-image: linear-gradient(lighten($blue, 5%), $blue);
+}
+
+input[type="range"]:focus + .rangeslider .rangeslider__handle {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.rangeslider-labels {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+    color: $gray;
+    cursor: default;
+
+    .rangeslider-label-min {
+        float: left;
+    }
+
+    .rangeslider-label-max {
+        float: right;
+    }
+}
+
+.range-value {
+    position: absolute;
+    display: inline-block;
+    top: 20px;
+    left: 0;
+
+    .range-value-label {
+        display: inline-block;
+        padding: 5px 10px;
+        width: 40px;
+        text-align: center;
+        line-height: 1;
+        background: $gray-lighter;
+        color: $gray;
+        -webkit-font-smoothing: antialiased;
+        border-radius: 2px;        
+    }
+
+    .range-value-arrow {
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 5px 0;
+        border-color: $gray-lighter transparent transparent;
+    }
+}

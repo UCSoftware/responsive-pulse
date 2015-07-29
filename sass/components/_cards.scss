@@ -1,0 +1,141 @@
+$card-headroom: 1em;
+$card-inset: 1.5em;
+
+.card {
+    position: relative;
+
+    .card-body {
+        display: inline-block;
+        width: 100%;
+        background: $white;
+        border: 1px solid $gray-lighter;
+        padding: $card-headroom $card-inset;
+        margin-bottom: $card-headroom;
+
+        &.card-body--no-border {
+            border: none;
+        }
+
+        .card-breakout {
+            clear: both;
+            margin-left: -$card-headroom;
+            margin-right: -$card-headroom;
+
+            img {
+                max-width: 100%;
+                width: auto;
+                height: auto;
+            }
+        }
+
+        .card-intro {
+            margin-bottom: $card-headroom * 2;
+
+        }
+
+        .data-controls {
+            margin-bottom: 1em;
+            text-align: right;
+        }
+
+        hr {
+            height: 0;
+            border: 0;
+            border-top: 1px solid $off-white;
+            margin: $card-headroom (-$card-inset);
+        }
+
+        .card-row {
+            border-bottom: 1px solid $gray-lighter;
+            padding: 2em 0;
+            clear: both;
+            max-width: 38em;
+
+            form {
+                display: inline-block;
+                width: 100%;
+                clear: both;
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
+
+    &.card-table {
+        .card-body {
+            padding: 0;
+        }
+    }
+}
+
+.card-title {
+    font-size: $scale-medium;
+    font-weight: 300;
+    color: $gray-light;
+    margin-bottom: $card-headroom / 2;
+}
+
+.card-responses,
+.card-score,
+.card-divergence {
+    text-align: center;
+}
+
+.card--spacious {
+    .card-body {
+        padding: ($card-headroom * 1.5) ($card-inset * 1.5);
+
+        .card-breakout {
+            margin-left: -($card-inset * 1.5);
+            margin-right: -($card-inset * 1.5);
+            margin-top: ($card-headroom * 2);
+            margin-bottom: ($card-headroom * 2);
+        }
+
+    }
+
+    @include media(("<phone")) {
+        &.card-full {
+            font-size: 0.9em;
+
+            .title {
+                line-height: 125%;
+                font-size: 1.5em;
+            }
+
+            .card-body {
+                padding: $card-headroom $card-inset;
+
+                .card-breakout {
+                    clear: both;
+                    margin-left: -$card-inset;
+                    margin-right: -$card-inset;
+                }
+
+            }
+
+            .card-half {
+                margin-bottom: 2em;
+            }
+
+        }
+    }
+}
+
+.card--success {
+    .card-body {
+        padding: 3em;
+    }
+
+    .card-title {
+        color: $gray-darker;
+        font-size: $scale-xlarge;
+        font-weight: bold;
+    }
+
+    a {
+        color: $blue;
+    }
+}

@@ -1,0 +1,12 @@
+mixin input-textarea(name, placeholder, value, label, readonly, rows)
+    .form--area
+        label.form--element.form--element-textarea
+            if label
+                .form--element-label!= label
+            if readonly
+                +form-change-button()
+            textarea.form--element-control(name=name, rows=rows || 5, placeholder=placeholder, readonly=(readonly == true ? "readonly" : undefined))&attributes(attributes)
+                if block
+                  block
+                else
+                  != messages.field && messages.field[0][name] ? messages.field[0][name] : value

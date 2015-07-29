@@ -1,0 +1,38 @@
+extends /layouts/base
+
+block content
+  main
+    section
+      .auth--form
+        h1 Sign Up
+        form.form(method="post", action=(typeof activationKey !== 'undefined' ? '/activate' : '/signup'))
+          if messages.error
+            ul.form--errors
+              for error in messages.error
+                li= error
+          .form--group
+            label.form--element.form--element-bundled.form--element-text
+              input(type="text", name="name", placeholder="First and Last Name").form--element-control
+            label.form--element.form--element-bundled.form--element-text
+              input(type="text", name="company", placeholder="Company").form--element-control
+            label.form--element.form--element-bundled.form--element-text
+              //- The 'email' field is named 'username' because that is what the
+              //- passport library requires to validate on req.logIn.
+              input(type="email", name="username",
+                    placeholder="E-mail Address",
+                    value=(typeof email !== 'undefined' ? email : ''),
+                    readonly=(typeof activationKey !== 'undefined' ? true : false)).form--element-control
+          .form--group
+            label.form--element.form--element-bundled.form--element-text
+              input(type="password", name="password", placeholder="Password").form--element-control
+            label.form--element.form--element-bundled.form--element-text
+              input(type="password", name="validate_password" placeholder="Re-type Password").form--element-control
+          .form--group
+            .form--element.form--element-checkbox
+              input(type="checkbox", name="check", value="c1").form--element-control#c1
+              label(for="c1").span.form--element-value I agree to the <a href="/terms" tabindex="-1" target="_blank">Terms &amp; Conditions</a>
+          input(type="hidden", name="_csrf", value=csrfToken)
+          if typeof activationKey !== 'undefined'
+            input(type="hidden", name="activationKey", value=activationKey)
+          button(type="submit").button.button--primary.login--submit Submit
+      .login--signup Already have an account? <a href="/login">Log in here</a>

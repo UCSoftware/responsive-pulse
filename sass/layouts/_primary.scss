@@ -1,0 +1,38 @@
+body {
+    background: $off-white;
+    margin: 0;
+}
+
+main {
+    padding: 0 1em;
+
+    section {
+        @include container;
+    }
+
+}
+
+.overview, .detail {
+    .no-responses {
+        text-shadow: 0 1px 0 $white;
+    
+        text-align: center;
+        font-size: $scale-xlarge;
+        font-weight: 300;
+        padding-top: 3em;
+        color: $gray-light;
+        margin-bottom: 2em;
+
+        @include media(("<phone")) {
+            font-size: inherit;
+        }
+
+        a:hover {
+            color: darken($gray-light, 15%);
+        }
+
+        h1 {
+            margin-bottom: 1em;
+        }
+    }
+}

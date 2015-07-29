@@ -1,0 +1,13 @@
+include ../buttons
+extends ../layout
+
+block title
+    h1 Survey shared with you
+
+block content
+    if invitee
+      p Hi #{invitee},
+    p <strong>#{inviter}</strong> has added you as a#{role.match(/^[aeiou]/) ? 'n' : ''} #{role} on their <strong>#{survey.title}</strong> survey. Click the button below to view.
+
+block actions
+    +email-button('View Survey', baseUrl + '/view/' + survey.key)

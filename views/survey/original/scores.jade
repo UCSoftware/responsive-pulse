@@ -1,0 +1,53 @@
+extends /layouts/auth_base
+include /partials/modal
+include /survey/header
+
+block content
+  +modal('modal--share')
+    include /partials/modals/share
+
+  main
+    section
+      if typeof survey !== 'undefined' && survey.responseCount
+        +header
+          include nav
+      .ovw-container
+        .ovw-card-row
+          .card.card-half
+            .card-body
+              h2.card-title= domain
+              .card-data
+                table.domain-table(data-domain=domain)
+                  thead
+                    tr
+                      th.label  
+                      th Score
+                  tbody
+                .data-placeholder--box
+
+          .card.card-half.last
+            .card-body
+              h2.card-title Highest Agreement
+              .card-data
+                .chart.numberline.agreement(data-domain=domain)
+                  .data-placeholder--box.data-placeholder--third
+                  .data-placeholder--err Not enough data.
+                .legend
+                  .legend-item.leadership Leadership
+                  .legend-item.team Team
+                  .legend-item.agreement Leadership & Team Agree
+            .card-body
+              h2.card-title Highest Disagreement
+              .card-data
+                .chart.numberline.disagreement(data-domain=domain)
+                  .data-placeholder--box.data-placeholder--third
+                  .data-placeholder--err Not enough data.
+                .legend
+                  .legend-item.leadership Leadership
+                  .legend-item.team Team
+        .ovw-card-row
+          .card.card-full
+            .card-body
+              h2.card-title Verbatims
+              .card-data
+                ol.verbatims--list.table(data-domain=domain)

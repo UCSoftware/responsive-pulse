@@ -1,0 +1,225 @@
+// base font size
+$base-font-size: 16px;
+// base line height
+$base-line-height: 22px;
+
+// type scale (major third)
+$scale-huge:    2.441em;
+$scale-xlarge:  1.953em;
+$scale-large:   1.563em;
+$scale-medium:  1.25em;
+$scale-normal:  1em;
+$scale-small:   0.8em;
+$scale-tiny:    0.64em;
+
+// typefaces
+$sans:              "Karla", Helvetica, sans-serif;
+$serif:             "Merriweather", Georgia, serif;
+$mono:              "fira-mono", Courier, monospace;
+
+// global defaults
+body {
+    font-family: $sans;
+    color: $gray-dark;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+
+    @include media("<tablet") {
+        font-size: 14px;
+        line-height: $base-line-height;
+    }
+}
+
+.small {
+    font-size: $scale-small;
+    color: $gray;
+}
+
+h3 {
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+
+.type-center {
+    text-align: center;
+}
+
+// bold
+strong {
+    font-weight: 700;
+}
+
+// italics
+em {
+    font-style: italic;
+}
+
+// superscript
+sup { 
+    vertical-align: super;
+    font-size: 60%;
+}
+
+// abbreviations
+abbr {
+    border-bottom: 1px dashed currentColor;
+
+    &:hover {
+        color: $gray;
+        cursor: pointer;
+    }
+}
+
+// headers
+.title {
+    font-weight: 700;
+    margin-bottom: 0.2em;
+}
+
+.title-xlarge {
+    font-size: $scale-xlarge;
+}
+
+.title-large {
+    font-size: $scale-large;
+}
+
+.title-medium {
+    font-size: $scale-medium;
+}
+
+.title-normal {
+    font-size: $scale-normal;
+}
+
+.sub-title {
+    font-family: $serif;
+    font-style: italic;
+}
+
+// paragraphs
+
+.copy-large {
+    font-size: 1.3em;
+    line-height: 150%;
+    color: $gray-dark;
+}
+
+p+p {
+    margin-top: 1em;
+}
+
+// links
+a {
+    color: inherit;
+    cursor: pointer;
+
+    &.link-action {
+        color: $gray-dark;
+        text-decoration: none;
+        border-bottom: 1px solid $gray-light;
+
+        &:hover {
+            color: $blue;
+            border-color: lighten($blue, 20%);
+        }
+    }
+
+    &.link-action-gray {
+        color: $gray;
+        border-color: $gray-lighter;
+    }
+}
+
+// voicing
+.voice-system {
+    font-family: $sans;
+}
+
+.voice-ros {
+    font-family: $serif;
+}
+
+// lists
+ul {
+    list-style: disc inside;
+}
+
+ol {
+    list-style: decimal inside;
+    margin: 1em 0;
+}
+
+// code
+code {
+    font-family: $mono;
+}
+
+// mobile typography
+.mobile-label {
+    display: none;
+
+    @include media(("<phone")) {
+        display: inline;
+    }
+}
+
+.mobile-hide-label {
+    display: inline;
+
+    @include media(("<phone")) {
+        display: none;
+    }
+}
+
+.data-placeholder--number {
+    color: $gray-lighter;
+}
+
+.data-placeholder--box {
+    background: linear-gradient(to right, #fff, #eee, #fff);
+    background-size: 200% 100%;
+    animation-name: moving-gradient;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    display: inline-block;
+    width: 100%;
+    padding-top: 100%;
+    opacity: 0.5;
+}
+
+.data-placeholder--err {
+    display: none;
+    width: 100%;
+    color: $gray;
+    text-align: center;
+    padding: 5% 0;
+
+    &.visible {
+        display: block;
+    }
+}
+
+.data-placeholder--third {
+    padding-top: 33%;
+}
+
+.data-placeholder--half {
+    padding-top: 50%;
+}
+
+.date-underline {
+    border-bottom: 1px dashed $gray-light;
+    padding-bottom: 2px;
+    cursor: default;
+}
+
+hr {
+    height: 0;
+    border: 0;
+    border-top: 1px solid $gray-lighter;
+}

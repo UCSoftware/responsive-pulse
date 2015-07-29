@@ -1,0 +1,60 @@
+.hero {
+    height: 28rem;
+    background: url("/img/hero.jpg");
+    background-size: cover;
+    background-position: center middle;
+    margin-bottom: 3rem;
+}
+
+.hero--inner {
+    @include container;
+    padding: 6em 0;
+}
+
+.hero--text {
+    color: $white;
+    background: $green;
+    display: inline-block;
+    padding: 1rem 2rem;
+}
+
+.hero--cta {
+    display: inline-block;
+    margin: 1rem 0;
+    border: 2px solid $white;
+    border-radius: 3px;
+}
+
+.action {
+    margin-top: 2em;
+}
+
+.placeholder {
+    height: 20em;
+    background: #eee;
+}
+
+.landing-screenshot {
+    @include span(4);
+
+    line-height: 0;
+    height: auto;
+    margin-bottom: $card-headroom;
+
+    @include media("<phone") {
+        @include span(12);
+    }
+
+    img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        padding: 5px;
+        background: #fff;
+        border: 1px solid $gray-lighter;
+    }
+
+    &:last-child {
+        @include last;
+    }
+}

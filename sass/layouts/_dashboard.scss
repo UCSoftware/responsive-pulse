@@ -1,0 +1,156 @@
+.dashboard {
+    .global {
+        text-align: center;
+    }
+
+    .global-number {
+        font-size: 4em;
+        padding: 0.25em 0;
+    }
+
+    @include media(("<phone")) {
+        .card-table .card-body {
+            padding: 0;
+        }
+
+        .table--checkbox {
+            display: none;
+        }
+    }
+}
+
+.dashboard--actions {
+    display: inline-block;
+
+    @include media(("<phone")) {
+        float: none;
+        .button--secondary {
+            display: none;
+        }
+    }
+}
+
+.dashboard--actions-item {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.dashboard-pagination {
+    color: $gray-dark;
+}
+
+.dashboard-pagination--info {
+    background: $white;
+    border-top: 2px solid $off-white;
+    padding: 1rem;
+    color: $gray-light;
+
+    a {
+        color: $gray-light;
+        border-color: $gray-light;
+    }
+}
+
+.dashboard-pagination-control {
+    margin-top: 1em;
+    width: 50%;
+    margin: 0 auto;
+
+    @include media(("<phone")) {
+        width: auto;
+    }
+}
+
+.dashboard--search {
+    float: right;
+    position: relative;
+
+    input {
+        margin-top: 0;
+        padding-left: 35px;
+        width: 20rem;
+    }
+
+    .dashboard--search-icon {
+        position: absolute;
+        top: 9px;
+        left: 15px;
+        color: $gray-light;
+        pointer-events: none;
+    }
+
+    @include media(("<phone")) {
+        float: none;
+        margin-bottom: 1em;
+
+        input {
+            width: 100%;
+        }
+    }
+}
+
+.dashboard--options {
+    padding: 1rem 0;
+
+    @include media(("<phone")) {
+        text-align: center;
+
+        > span {
+            float: none;
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+            padding-top: 0;
+            padding-bottom: 1em;
+        }
+    }
+}
+
+.dashboard--table {
+    background: $white;
+}
+
+.table--list .no-responses {
+    border-bottom: 0;
+}
+
+.survey-title {
+    font-size: $scale-huge;
+    color: $gray-darker;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.33;
+}
+
+.dashboard--share {
+    a {
+        text-decoration: none;
+    }
+
+    &:hover,
+    &.zeroclipboard-is-hover {
+        &,
+        a {
+            color: $black;
+        }
+    }
+}
+
+.dashboard--copy,
+.dashboard--copy:hover {
+    cursor: pointer;
+}
+
+.dashboard--zc-copied {
+    animation: zc-copied 4s linear 0s;
+}
+
+@keyframes zc-copied {
+    0% {
+        color: $green;
+    }
+
+    100% {
+        color: $gray-darker;
+    }
+}

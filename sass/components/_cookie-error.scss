@@ -1,0 +1,11 @@
+#cookies {
+    display: none;
+    width: 100%;
+    padding: 1rem 3rem;
+    background: #fff;
+    text-align: center;
+
+    &.cookies--not-enabled {
+        display: block;
+    }
+}

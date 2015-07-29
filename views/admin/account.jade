@@ -1,0 +1,27 @@
+extends /layouts/auth_base
+
+include /partials/formcomponents
+
+block content
+    main
+        section
+            .row
+                .card.card-full.card--spacious
+                    .card-body
+                        .card-row
+                            +form-group(true)(action=("/admin/user/" + accountUser.id))
+                                h3 Basic Information
+                                +input-text("name", null, accountUser.profile.name || "", "Name", true)(required="")
+                                +input-text("organization", null, accountUser.profile.organization || "", "Organization", true)(required="")
+                                +input-email("email", null, accountUser.email, "E-mail", true)(required="")
+                                +input-password("password", null, "", "Password", true)
+                                input(type="hidden", name="_csrf", value=csrfToken)
+                                +form-buttons
+                        .card-row
+                            +form-group(true)(action=("/admin/user/" + accountUser.id))
+                                h3 Account State
+                                +input-select("activated", {"1": "Yes", "0": "No"}, "Activated", accountUser.activated ? "1" : "0")
+                                div &nbsp;
+                                +input-select("roles", {"admin": "Admin", "user": "User"}, "Role", accountUser.roles.indexOf( 'admin' ) > -1 ? "admin" : "user")
+                                input(type="hidden", name="_csrf", value=csrfToken)
+                                +form-buttons

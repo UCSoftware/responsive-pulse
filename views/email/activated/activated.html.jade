@@ -1,0 +1,11 @@
+include ../buttons
+extends ../layout
+
+block title
+    h1 Your account has been activated.
+
+block content
+    p Thank you for activating your account on Responsive Pulse. You can now login with your username <strong>#{to}</strong>.
+
+block actions
+    +email-button('Sign in', baseUrl + '/signin')

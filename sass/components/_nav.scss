@@ -1,0 +1,139 @@
+.nav {
+    padding: 0 1em;
+}
+
+.nav--container {
+    @include container;
+    position: relative;
+    height: 5em;
+}
+
+.nav--logo {
+    @include span(3);
+
+    img {
+        border: 0;
+    }
+
+    @include media("<phone") {
+        @include span(12);
+    }
+}
+
+.nav--logo-img {
+    width: 30px;
+    display: inline-block;
+    vertical-align: middle;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+.nav--logo-title {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 2rem 0;
+    padding: 0 1rem;
+    font-weight: 200;
+
+    strong {
+        font-weight: 600;
+    }
+
+    @include media("<phone") {
+        float: none;
+        text-align: center;
+        border: 0;
+    }
+
+}
+
+.nav--menu {
+    float: right;
+    padding: 1rem 0;
+}
+
+.nav--menu-item {
+    display: inline-block;
+    text-decoration: none;
+    padding: 1rem 0;
+
+    +.nav--menu-item {
+        margin-left: 1rem;
+    }
+
+}
+
+.nav--menu-cta {
+    padding: 0.5rem 1rem;
+    border: 1px solid $green;
+    border-radius: $r;
+    color: $green;
+
+    &:hover {
+        color: lighten($green, 10%);
+        border-color: currentColor;
+    }
+}
+
+.results--nav {
+    background: $green;
+    color: $white;
+    padding: 0.75rem 1rem;
+}
+
+.results--nav-menu {
+    display: inline-block;
+}
+
+.results--nav-actions {
+    float: right;
+
+    .results--nav-menu-item {
+        color: $white;
+    }
+}
+
+.results--nav-menu-item {
+    display: inline-block;
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: transparentize($white, .4);
+
+    &:first-of-type {
+        margin-left: 0;
+    }
+
+    i {
+        margin-right: 0.25rem;
+    }
+
+    &.is-active {
+        color: $white;
+    }
+}
+
+.sticky-nav.is_stuck {
+    padding-right: 1px;
+    z-index: 2000;
+
+    .results--nav {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    &:after {
+        content: "";
+        height: 0.25rem;
+        position: absolute;
+        left: 0;
+        right: 1px;
+        bottom: -0.25rem;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+    }
+}
+
+

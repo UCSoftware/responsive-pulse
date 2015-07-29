@@ -1,0 +1,60 @@
+.modal--section
+  h3.modal--section-title Already shared with
+  ul.share--list
+    - var activeUser = survey.users.filter( function( u ) { try { return u.user.id == user.id; } catch( e ) { return false; } } )
+    if activeUser.length
+      - activeUser = activeUser[ 0 ];
+    else
+      - activeUser = { permissions: [] };
+    - var ownerCount = survey.users.reduce( function( prev, cur ) { return cur.permissions.indexOf( 'owner' ) > -1 ? prev + 1 : prev; }, 0 );
+    script.
+      var activeSurveyUser = { perms: !{JSON.stringify(activeUser.permissions)}, roles: !{JSON.stringify(user.roles)} };
+    if survey.users.filter( function( u ) { return u & u.user; } ).length
+      for u in survey.users
+        if u && u.user
+          li.share--list-item(data-email=u.user.email)
+            if u.user.profile && u.user.profile.name
+              .share--list-name
+                = u.user.profile.name
+                span
+                  |  (
+                  = u.user.email
+                  | )
+            else
+              .share--list-name= u.user.email
+            .share--list-permissions
+              span(class=(user.hasRole('admin') || activeUser.permissions.indexOf('owner') > -1 ? 'share--list-permissions--hidden' : ''))
+                for perm in validPermissions
+                  if u.permissions.indexOf(perm) > -1
+                    = perm.split( ' ' ).map( function( p ) { return p[0].toUpperCase() + p.slice(1).toLowerCase() } ).join( ' ' )
+              select(class=(!user.hasRole('admin') && activeUser.permissions.indexOf('owner') === -1 ? 'share--list-permissions--hidden' : ''))
+                for perm in validPermissions
+                  option(value=perm, selected=(u.permissions.indexOf(perm) > -1))
+                    = perm.split( ' ' ).map( function( p ) { return p[0].toUpperCase() + p.slice(1).toLowerCase() } ).join( ' ' )
+            - var surveyUserIsOwnerAndActiveUserIsNot = (activeUser.permissions.indexOf('owner') === -1 && u.permissions.indexOf('owner') > -1);
+            - var activeUserIsOnlyOwner = (user.id === u.user.id && activeUser.permissions.indexOf('owner') > -1 && ownerCount === 1);
+            if (surveyUserIsOwnerAndActiveUserIsNot || activeUserIsOnlyOwner) && !user.hasRole('admin')
+              .share--list-remove.share--list-remove--hidden Remove
+            else
+              .share--list-remove Remove
+    else
+      li.share--list-nobody
+        div: strong Nobody, yet!
+        p Add someone using their email address below to share these results.
+    li.share--list-item.share--list-item-template(data-email='')
+      .share--list-name
+      .share--list-permissions
+        span(class=(user.hasRole('admin') || activeUser.permissions.indexOf('owner') > -1 ? 'share--list-permissions--hidden' : ''))
+        select(class=(!user.hasRole('admin') && activeUser.permissions.indexOf('owner') === -1 ? 'share--list-permissions--hidden' : ''))
+          for perm in validPermissions
+            option(value=perm)
+              = perm.split( ' ' ).map( function( p ) { return p[0].toUpperCase() + p.slice(1).toLowerCase() } ).join( ' ' )
+      .share--list-remove Remove
+.modal--section
+  h3.modal--section-title Add Collaborator
+  .share--new
+    .share--new-input
+      input(type="text", name="email", placeholder="Email Address")
+      input(type="hidden", name="_csrf", value=csrfToken)
+    .share--new-submit
+      a.button.button--primary Share

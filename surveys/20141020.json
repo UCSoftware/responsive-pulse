@@ -1,0 +1,324 @@
+{
+    "pages": [
+        {
+            "title": "First, tell us a little about yourself",
+            "header": "This survey takes approximately 5 minutes to complete.",
+            "fields": [
+                {
+                    "type": "slider",
+                    "label": "How long have you worked at this organization? (in years)",
+                    "name": "org_years",
+                    "required": true,
+                    "min": {
+                        "label": "1",
+                        "value": "1"
+                    },
+                    "max": {
+                        "label": "25+",
+                        "value": "25"
+                    }
+                },
+                {
+                    "type": "slider",
+                    "label": "How many layers of management are you below your CEO?",
+                    "help": "If you're not sure, take your best guess.",
+                    "name": "management_layers",
+                    "required": true,
+                    "min": {
+                        "label": "1",
+                        "value": "1"
+                    },
+                    "max": {
+                        "label": "10+",
+                        "value": "10"
+                    }
+                },
+                {
+                    "type": "radio",
+                    "label": "How would you describe your organization's position in the market?",
+                    "name": "org_position",
+                    "required": true,
+                    "options": {
+                        "leading": "Leading",
+                        "following": "Following",
+                        "declining": "Declining"
+                    }
+                },
+                {
+                    "type": "text",
+                    "label": "What team and/or department do you work in?",
+                    "name": "team",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "title": "Purpose",
+            "header": "Help us understand your organization's reason for being.",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "PuN": "Our purpose helps us measure our progress in an uncertain world.",
+                        "PuA": "Our purpose gives us a long-term vision that moderates short-term expectations.",
+                        "PuS": "Our purpose and culture influence our decisions more than management.",
+                        "PuI": "Our purpose serves and mobilizes a community of users and partners.",
+                        "PuD": "Our purpose aligns our goals at all levels.",
+                        "PuR": "Our purpose inspires us to discover new data and insights.",
+                        "PuT": "Our purpose gives teams the freedom to attempt unconventional projects."
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "purpose_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "People",
+            "header": "Help us understand the people and teams who do the work.",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "PeN": "Our teams are empowered to pursue their work without management interference.",
+                        "PeA": "Our teams embrace uncertainty and complexity.",
+                        "PeS": "Our teams are tightly knit and technologically connected.",
+                        "PeI": "Our teams have high performers in every position.",
+                        "PeD": "Our teams only include the people necessary to do the work.",
+                        "PeR": "Our teams are diverse and multidisciplinary.",
+                        "PeT": "Our teams are enhanced by crowds and communities outside our walls."
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "people_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Process",
+            "header": "Help us understand how the work gets done.",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "PrN": "Our process involves customers and users in the creation of our products and services.",
+                        "PrA": "Our process enables what is working to spread.",
+                        "PrS": "Our processes and rules are simple, intuitive, and easy to remember.",
+                        "PrI": "Our process requires teams to share information so that everyone can benefit.",
+                        "PrD": "Our process helps us prepare for a variety of possible outcomes.",
+                        "PrR": "Our process dedicates a set amount of time and resources to personal projects.",
+                        "PrT": "Our process enables teams to form, evolve, and disband themselves."
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "process_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Product",
+            "header": "Help us understand what you offer to your users or customers.",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "PdN": "Our products and services get more valuable as more people use them.",
+                        "PdA": "Our products and services learn from being used.",
+                        "PdS": "Our products and services are improved gradually and frequently.",
+                        "PdI": "Our products and services resist becoming unwieldy or unfocused.",
+                        "PdD": "Our products and services are designed to work together and share information.",
+                        "PdR": "Our product and service decisions are made by teams who are closest to our users/customers.",
+                        "PdT": "Our product and service innovations and improvements are tested with real users daily."
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "product_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Platform",
+            "header": "Help us understand if and how any of your products allow a community to improve or build upon them.",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "PlN": "Our platform remains focused and simple in order to support a dynamic community.",
+                        "PlA": "Our platform allows our community to build businesses on top of our business.",
+                        "PlS": "Our platform empowers our community with an open and clear interface.",
+                        "PlI": "Our platform helps us find successful partners that we can incorporate into our ecosystem.",
+                        "PlD": "Our platform learns from customers who use it and our products in unexpected ways.",
+                        "PlR": "Our platform produces data that is available to our community.",
+                        "PlT": "Our platform allows us to pursue new relationships even before we know what value they’ll offer."
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "platform_verbatims"
+                }
+            ]
+        }
+    ],
+    "strategic_inputs": {
+        "Purpose": {
+            "field": {
+                "prefix": "Pu"
+            },
+            "description": "Why we come to work",
+            "verbatim": "purpose_verbatims"
+        },
+        "People": {
+            "field": {
+                "prefix": "Pe"
+            },
+            "description": "The teams that do the work",
+            "verbatim": "people_verbatims"
+        },
+        "Process": {
+            "field": {
+                "prefix": "Pr"
+            },
+            "description": "How the work gets done",
+            "verbatim": "process_verbatims"
+        },
+        "Product": {
+            "field": {
+                "prefix": "Pd"
+            },
+            "description": "What we deliver",
+            "verbatim": "product_verbatims"
+        },
+        "Platform": {
+            "field": {
+                "prefix": "Pl"
+            },
+            "description": "What the community creates on our behalf",
+            "verbatim": "platform_verbatims"
+        }
+    },
+    "operational_outputs": {
+        "Serve Networks": {
+            "field": {
+                "postfix": "N"
+            },
+            "description": "Resilient lines of connection outward <em>even over</em> robust internal hierarchies"
+        },
+        "Distribute Authority": {
+            "field": {
+                "postfix": "A"
+            },
+            "description": "Empowered local agents <em>even over</em> centralized command and control"
+        },
+        "Seek Simplicity": {
+            "field": {
+                "postfix": "S"
+            },
+            "description": "Resisting and reducing complicatedness <em>even over</em> rigorous process"
+        },
+        "Process Information": {
+            "field": {
+                "postfix": "I"
+            },
+            "description": "Acting on and sharing information <em>even over</em> amassing and protecting it"
+        },
+        "Encourage Divergence": {
+            "field": {
+                "postfix": "D"
+            },
+            "description": "Allowing for a variety of ideas and practices <em>even over</em> standardization"
+        },
+        "Enable Crossover": {
+            "field": {
+                "postfix": "R"
+            },
+            "description": "Replication of successes at the edge <em>even over</em> repeating historical practices"
+        },
+        "Embrace Uncertainty": {
+            "field": {
+                "postfix": "T"
+            },
+            "description": "Short-term hypothesis testing <em>even over</em> long-term planning"
+        }
+    },
+    "intersections": {
+        "PuN": "Our purpose serves and mobilizes a community of users and partners.",
+        "PuA": "Our purpose empowers individual decision making.",
+        "PuS": "Our purpose aligns our individual goals.",
+        "PuI": "Our purpose inspires us to discover new data and insights.",
+        "PuD": "Our purpose encourages us to try new things, even at the risk of failure.",
+        "PuR": "We actively measure our progress toward our purpose.",
+        "PuT": "Our purpose gives us the freedom to think long-term.",
+
+        "PeN": "Our teams are enhanced by crowds and communities outside our walls.",
+        "PeA": "Our teams are empowered to pursue their work without management interference.",
+        "PeS": "Our teams only include the people necessary to do the work.",
+        "PeI": "Our teams are tightly knit and technologically connected.",
+        "PeD": "Our teams are made up of people with diverse skills and expertise.",
+        "PeR": "Our teams have high performers in every position.",
+        "PeT": "Our teams thrive when they have to solve problems and adapt quickly.",
+
+        "PrN": "Customers participate in the creation of our products.",
+        "PrA": "Our process lets teams form, evolve and disband themselves. ",
+        "PrS": "Our processes and rules are simple, intuitive, and easy to remember.",
+        "PrI": "Our process requires teams to share information so that everyone can benefit.",
+        "PrD": "Our people have the freedom to work on self-directed projects.",
+        "PrR": "Our process ensures that new and successful practices are shared and repeated.",
+        "PrT": "Our process involves predicting and preparing for a variety of outcomes.",
+
+        "PdN": "Our products and services get more valuable for each customer as more people use them.",
+        "PdA": "The people closest to our customers are empowered to make product and service decisions.",
+        "PdS": "We work to keep our products and services simple to use and maintain.",
+        "PdI": "Our products and services are designed to work together and share information.",
+        "PdD": "We routinely test new product ideas with real users.",
+        "PdR": "Our products and services are continually improved based on how they are being used.",
+        "PdT": "Our products and services evolve based on customer feedback more so than a long-term roadmap.",
+
+        "PlN": "We open up our products and services for others to build upon for their own benefit.",
+        "PlA": "Users have direct and easy access to our platform of products and services.",
+        "PlS": "Independent communities form through the use of our products and services. ",
+        "PlI": "We open up the data our users and customers create when using our products.",
+        "PlD": "We encourage and learn from unexpected and creative uses of our products and services.",
+        "PlR": "Our relationship with our partners and users is mutually beneficial.",
+        "PlT": "We explore new strategic relationships even if their value isn't immediately clear."
+    },
+    "rows": [
+        "Serve Networks",
+        "Distribute Authority",
+        "Seek Simplicity",
+        "Process Information",
+        "Encourage Divergence",
+        "Enable Crossover",
+        "Embrace Uncertainty"
+    ],
+    "columns": [
+        {"title": "Purpose"},
+        {"title": "People"},
+        {"title": "Process"},
+        {"title": "Product"},
+        {"title": "Platform"}
+    ],
+    "overalls": [
+        ["PuI", "PeT", "PrN", "PdN", "PlA"],
+        ["PuS", "PeN", "PrT", "PdR", "PlS"],
+        ["PuD", "PeD", "PrS", "PdI", "PlN"],
+        ["PuR", "PeS", "PrI", "PdD", "PlR"],
+        ["PuT", "PeR", "PrR", "PdT", "PlD"],
+        ["PuN", "PeI", "PrA", "PdA", "PlI"],
+        ["PuA", "PeA", "PrD", "PdS", "PlT"]
+    ],
+    "render": "original"
+}

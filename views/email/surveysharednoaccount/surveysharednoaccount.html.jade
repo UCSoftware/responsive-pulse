@@ -1,0 +1,16 @@
+include ../buttons
+extends ../layout
+
+block title
+    h1 Survey shared with you
+
+block content
+    p Hi there,
+    p
+      | <strong>#{inviter}</strong>
+      if organization
+        |  at <strong>#{organization}</strong>
+      |  has added you as a#{role.match(/^[aeiou]/) ? 'n' : ''} #{role} on their <strong>#{survey.title}</strong> survey. Click the button below to create an account and start collaborating!
+
+block actions
+    +email-button('Get Started', baseUrl + '/activate?email=' + encodeURIComponent(email) + '&key=' + inviteeKey)

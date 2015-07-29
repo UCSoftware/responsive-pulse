@@ -1,0 +1,15 @@
+mixin input-select-option(name, key, val, value)
+  option(value=key, selected=((messages.field && messages.field[0][name] == key) || (value && value == key) ? true : false))=val
+
+mixin input-select(name, options, label, value, stacked)
+    .form--area(class=(stacked == true ? "form--area-stacked" : ""))
+        label.form--element.form--element-select(class=(stacked == true ? "form--element-select-stacked" : ""))
+            if label
+                .form--element-label= label
+            select.form--chosen-select.form--element-control(name=name)&attributes(attributes)
+                if options instanceof Array
+                    each val in options
+                        +input-select-option(name, val, val, value)
+                else
+                    each val, key in options
+                        +input-select-option(name, key, val, value)

@@ -1,0 +1,11 @@
+include ../buttons
+extends ../layout
+
+block title
+    h1 Your account has been created.
+
+block content
+    p Thank you for creating an account with Responsive Pulse. You'll need to activate your account before you can sign in.
+
+block actions
+    +email-button('Activate', baseUrl + '/reg_activate?email=' + encodeURIComponent(to) + '&key=' + key)

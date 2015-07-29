@@ -1,0 +1,313 @@
+{
+    "pages": [
+        {
+            "title": "First, tell us a little about yourself",
+            "header": "This survey takes approximately 5 minutes to complete.",
+            "fields": [
+                {
+                    "type": "slider",
+                    "label": "How long have you worked at this organization (in years)?",
+                    "name": "org_years",
+                    "required": true,
+                    "min": {
+                        "label": "< 1",
+                        "value": "0"
+                    },
+                    "max": {
+                        "label": "25+",
+                        "value": "25"
+                    }
+                },
+                {
+                    "type": "teamselect",
+                    "label": "What team and/or department do you work in?",
+                    "name": "team",
+                    "required": true
+                },
+                {
+                    "type": "slider",
+                    "label": "How many layers of management are you below {{orgLeader}}?",
+                    "help": "If you're not sure, take your best guess.",
+                    "name": "management_layers",
+                    "required": true,
+                    "min": {
+                        "label": "I report directly",
+                        "value": "0"
+                    },
+                    "max": {
+                        "label": "20+",
+                        "value": "20"
+                    }
+                },
+                {
+                    "type": "radio",
+                    "label": "We are the market leaders.",
+                    "name": "org_position",
+                    "required": true,
+                    "options": {
+                        "leading": "Agree",
+                        "following": "Disagree"
+                    }
+                },
+                {
+                    "type": "radio",
+                    "label": "We are growing faster than our competitors.",
+                    "name": "org_traction",
+                    "required": true,
+                    "options": {
+                        "advancing": "Agree",
+                        "declining": "Disagree"
+                    }
+                },
+                {
+                    "type": "radio",
+                    "label": "We are more profitable than our competitors.",
+                    "name": "org_profitability",
+                    "required": true,
+                    "options": {
+                        "agree": "Agree",
+                        "disagree": "Disagree"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Purpose even over Profit",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "peop1": {
+                            "positive": "Q1: We tend to measure our success (or failures) in non-financial terms",
+                            "negative": "Q1: We tend to measure our success (or failure) primarily in financial terms"
+                        },
+                        "peop2": {
+                            "positive": "Q2: I believe in what my organization is fundamentally about. I'd rather invest my time and energy in this company than start over somewhere else",
+                            "negative": "Q2: If I were offered a job with a higher salary at another company I wouldn't hesitate to take it."
+                        },
+                        "peop3": {
+                            "positive": "Q3: I am surrounded by amazing talent – partners and colleagues – and we’re all here to pursue our organization’s purpose",
+                            "negative": "Q3: I'm not particularly impressed by my colleagues's talent or their commitment to our cause"
+                        },
+                        "peop4": {
+                            "positive": "Q4: I know exactly how my goals or objectives connect to our organization’s purpose",
+                            "negative": "Q4: I am not exactly sure how my daily work contributes to the organization's overarching objectives or purpose"
+                        },
+                        "peop5": {
+                            "positive": "Q5: In the absence of a clear directive, I use our organization’s purpose to make tough decisions and do the right thing",
+                            "negative": "Q5: In the absence of a clear directive I find it challenging to improvise, because I don't have an understanding of the bigger picture"
+                        }
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "peop_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Empowering even over Controlling",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "eeoc1": {
+                            "positive": "Q1: My customers' satisfaction is more important than meeting my superiors' expectations",
+                            "negative": "Q1: Meeting my superiors' expectations is more important than my customers' satisfaction"
+                        },
+                        "eeoc2": {
+                            "positive": "Q2: I have a budget, and I’m free to spend it the way I see fit",
+                            "negative": "Q2: I don't have a budget; or, I have a budget but I'm not free to spend it the way I see fit"
+                        },
+                        "eeoc3": {
+                            "positive": "Q3: I have the power to abandon work I know isn't generating any value",
+                            "negative": "Q3: I am pursuing work I know isn't generating any value"
+                        },
+                        "eeoc4": {
+                            "positive": "Q4: I'm able to decide which tools, software, and methods I use to get my work done",
+                            "negative": "Q4: The tools, software, and methods I use to get my work done are dictated to me by the organization and I don't have the authority to deviate"
+                        },
+                        "eeoc5": {
+                            "positive": "Q5: When it's not clear who has the authority to make a decision, I feel comfortable making that decision rather than delaying",
+                            "negative": "Q5: I don't feel safe making decisions unless I am certain I have the authority"
+                        }
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "eeoc_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Emergence even over Planning",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "eeop1": {
+                            "positive": "Q1: I rarely have a \"big reveal\" for my work products – instead I make many incremental improvements",
+                            "negative": "Q1: I prefer to bundle my improvements into a \"big reveal\" rather than publish small updates to my work product"
+                        },
+                        "eeop2": {
+                            "positive": "Q2: I've been part of a team working on an experimental product or project without a long-term roadmap",
+                            "negative": "Q2: I've never been part of a team working on an experimental product or project without a long-term roadmap"
+                        },
+                        "eeop3": {
+                            "positive": "Q3: I have the ability to change my team's structure (size, disciplines, objectives) with their consent",
+                            "negative": "Q3: Even if my team were supportive, I wouldn't make changes to my team (size, disciplines, objectives) unless directed to by my superior"
+                        },
+                        "eeop4": {
+                            "positive": "Q4: It's easy to release products and render services to those I serve",
+                            "negative": "Q4: Launching a new initiative is more difficult than it needs to be"
+                        },
+                        "eeop5": {
+                            "positive": "Q5: I can easily access my teammate's work and help them improve it, without having to ask",
+                            "negative": "Q5: It's difficult for me to access my teammate's work to improve upon it unless they send it to me as an e-mail attachment"
+                        }
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "eeop_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Networks even over Hierarchies",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "neoh1": {
+                            "positive": "Q1: I have frequent contact with my customers",
+                            "negative": "Q1: I rarely have direct contact with our customers"
+                        },
+                        "neoh2": {
+                            "positive": "Q2: I actively solicit feedback on my team's work products, and use this feedback to improve",
+                            "negative": "Q2: It is difficult for me to solicit and use feedback to improve our work products"
+                        },
+                        "neoh3": {
+                            "positive": "Q3: The people that review my performance are the ones that work closely with me",
+                            "negative": "Q3: I don't work closely with the individuals who review my performance"
+                        },
+                        "neoh4": {
+                            "positive": "Q4: I can access feedback or metrics on our products without having to ask for it",
+                            "negative": "Q4: We don't know if there is a problem with one of our products or services until someone calls or emails us"
+                        },
+                        "neoh5": {
+                            "positive": "Q5: I can easily ask people outside my team (even customers) for feedback on work when it's at an early stage",
+                            "negative": "Q5: It's challenging to get feedback from people outside my team – including customers – on work at an early stage"
+                        }
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "neoh_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Adaptivity even over Efficiency",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "aeoe1": {
+                            "positive": "Q1: I am allowed to assume new responsibilities (even if they overlap with someone else), if it brings us closer to realizing our goal",
+                            "negative": "Q1: I am not allowed to choose to take on new responsibilities, even if doing so would bring us closer to realizing our goal"
+                        },
+                        "aeoe2": {
+                            "positive": "Q2: My role is creative and I produce output directly, rather than rely on outside vendors",
+                            "negative": "Q2: I tend to rely on outside vendors when it comes to actual creative output"
+                        },
+                        "aeoe3": {
+                            "positive": "Q3: I'm rarely asked to speculate on the potential impact of my work – instead, I share results from customer-facing tests",
+                            "negative": "Q3: My boss understands that it's not always necessary to consult customers when making changes to a product or service"
+                        },
+                        "aeoe4": {
+                            "positive": "Q4: If an initiative falters, I'm expected to be honest about our missteps rather than only focus on what went well",
+                            "negative": "Q4: If an initiative falters, I'm expected to focus on what went well instead of sharing our missteps"
+                        },
+                        "aeoe5": {
+                            "positive": "Q5: I post my successes and failures in a central location my team can access so my team can benefit from what I learn",
+                            "negative": "Q5: As an organization we tend to erase failed initiatives from our collective memory"
+                        }
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "aeoe_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Transparency even over Privacy",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "teop1": {
+                            "positive": "Q1: I keep a to-do list that is open to anyone who wants to see it",
+                            "negative": "Q1: I don't share my to-do list with anyone"
+                        },
+                        "teop2": {
+                            "positive": "Q2: I am inclined to share my team's work and ultimate findings with anyone in the company who wants to know, I classify information only when necessary",
+                            "negative": "Q2: I prefer to share information on a strictly \"need to know\" basis"
+                        },
+                        "teop3": {
+                            "positive": "Q3: I can easily get the information I need to do my job well",
+                            "negative": "Q3: I have difficulty getting the information I need to do my job well"
+                        },
+                        "teop4": {
+                            "positive": "Q4: Other teams in the organization know exactly how to work with out team, what we provide, and how to request our services",
+                            "negative": "Q4: I frequently must correct other team's expectations of the sort of work my team and I perform"
+                        },
+                        "teop5": {
+                            "positive": "Q5: I frequently share drafts of my work, before it's been packaged for a wider audience",
+                            "negative": "Q5: I rarely share drafts of my work before it's been packaged for a wider audience"
+                        }
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "teop_verbatims"
+                }
+            ]
+        }
+    ],
+    "columns": [
+        {"title": "Purpose e/o Profit", "verbatims": "peop_verbatims"},
+        {"title": "Empowering e/o Controlling", "verbatims": "eeoc_verbatims"},
+        {"title": "Emergence e/o Planning", "verbatims": "eeop_verbatims"},
+        {"title": "Networks e/o Hierarchies", "verbatims": "neoh_verbatims"},
+        {"title": "Adaptivity e/o Efficiency", "verbatims": "aeoe_verbatims"},
+        {"title": "Transparency e/o Privacy", "verbatims": "teop_verbatims"}
+    ],
+    "overalls": [
+        ["peop1", "eeoc1", "eeop1", "neoh1", "aeoe1", "teop1"],
+        ["peop2", "eeoc2", "eeop2", "neoh2", "aeoe2", "teop2"],
+        ["peop3", "eeoc3", "eeop3", "neoh3", "aeoe3", "teop3"],
+        ["peop4", "eeoc4", "eeop4", "neoh4", "aeoe4", "teop4"],
+        ["peop5", "eeoc5", "eeop5", "neoh5", "aeoe5", "teop5"]
+    ],
+    "render": "even-over"
+}

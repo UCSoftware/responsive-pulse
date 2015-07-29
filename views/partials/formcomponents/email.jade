@@ -1,0 +1,21 @@
+mixin input-email(name, placeholder, value, label, readonly)
+    if messages.error
+        - errors = messages.error[0];
+        if typeof errors[name] !== 'undefined'
+            - error = errors[name]
+        else
+            - error = undefined
+        
+    .form--area
+        label.form--element.form--element-text(class=(error ? "form--element-invalid" : ""))
+            if label
+                .form--element-label= label
+            if readonly
+                +form-change-button()
+            input.form--element-control(type="email", name=name, data-parsley-trigger="change", value=value, placeholder=placeholder, readonly=(readonly == true ? "readonly" : undefined))&attributes(attributes)
+        if error
+            .form--area-errors
+                ul.form--element-invalid-message.filled
+                    li.parsley-required= error
+        else
+            .form--area-errors

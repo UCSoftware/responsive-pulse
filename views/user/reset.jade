@@ -1,0 +1,25 @@
+extends /layouts/base
+
+include /partials/formcomponents
+
+block content
+  main
+    section
+      .row
+        .card.card-third.card-center.card--login
+          .card-body
+            h1.card-title Reset Password
+            form.form(method="post")
+              if messages.error
+                ul.form--errors
+                  for error in messages.error
+                    li= error
+              if messages.success
+                .form--success= messages.success[0]
+              .form--group
+                label.form--element.form--element-bundled.form--element-text
+                  input(type="password", name="password", placeholder="New Password").form--element-control
+                label.form--element.form--element-bundled.form--element-text
+                  input(type="password", name="validate_password" placeholder="Re-type New Password").form--element-control
+              input(type="hidden", name="_csrf", value=csrfToken)
+              button(type="submit").button.button--primary.login--submit Reset Password

@@ -1,0 +1,82 @@
+extends /layouts/auth_base
+include /partials/modal
+include /survey/header
+
+block content
+  +modal('modal--share')
+    include /partials/modals/share
+
+  main
+      section
+        if typeof survey !== 'undefined' && survey.responseCount
+          +header
+            include nav
+        .ovw-container
+          if typeof survey !== 'undefined' && survey.responseCount
+            .ovw-card-row
+              .ovw-card-rowHeader.sticky-header: span Structure
+              .ovw-cardGroup.g--row
+                .ovw-card.g--third
+                  .card-body
+                    h2.card-title Hierarchy
+                    .card-data
+                      .chart.stacked(data-title='Hierarchy',
+                                    data-col='management_layers',
+                                    data-y-label='Layers beneath CEO')
+                        .data-placeholder--box
+                .ovw-card.g--third
+                  .card-body
+                    h2.card-title Position vs. Traction
+                    .card-data
+                      .chart.matrixplot(data-title='Position vs. Traction'
+                                        data-col-x='org_position', data-col-y='org_traction',
+                                        data-x-values='following,leading', data-y-values='advancing,declining',
+                                        data-x-labels='Following,Leading', data-y-labels='Advancing,Declining')
+                        .data-placeholder--box
+                .ovw-card.g--third.g--last
+                  .card-body
+                    h2.card-title Tenure
+                    .card-data
+                      .chart.bar.tenure(data-title='Tenure',
+                                        data-col='org_years',
+                                        data-x-label='in years',
+                                        filterable='')
+                        .data-placeholder--box
+            .ovw-card-row.g--row
+              .ovw-card-rowHeader.sticky-header: span Responsiveness
+              .ovw-cardGroup
+                .ovw-card.card-full
+                  .chart.line.responsiveness
+            .ovw-card-row.g--row
+              .ovw-card-rowHeader.sticky-header: span Score Breakdown
+              .ovw-cardGroup
+                .ovw-card.card-full
+                  .card-body
+                    .card-intro
+                      p.voice-system
+                        | Select a team from the drop-down menu to view their scores compared to the organization overall.
+                    .overall.card-data
+                      .data-controls
+                        .button-group
+                          span Team: 
+                          select.filter(data-col='team', data-min-value='2')
+                      .table-wrapper
+                        table.table.horizontal.responsive
+                          thead
+                            tr
+                              td.row-header  
+                              td.tooltip.right-offset-arrow(title='Why we come to work') Purpose
+                              td.tooltip.right-offset-arrow(title='The teams that do the work') People
+                              td.tooltip.right-offset-arrow(title='What we deliver') Process
+                              td.tooltip.right-offset-arrow(title='How the work gets done') Product
+                              td.tooltip.right-offset-arrow(title='What the community creates on our behalf') Platform
+                              td.row-summary.col-header Total
+                          tbody
+          else
+            .ovw-card-row
+              .ovw-card.card-full
+                .no-responses
+                  h1 Waiting for responses…
+                  h2
+                    a(href='/about') Learn more
+                    |  about Responsive OS.

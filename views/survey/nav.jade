@@ -1,0 +1,10 @@
+mixin surveyNav
+  if block
+    block
+  .results--nav-actions
+      a.results--nav-menu-item.modal--open(data-modalname='share')
+          i.fa.fa-fw.fa-share
+          | Share
+      a.results--nav-menu-item(href='/export/' + survey.key)
+          i.fa.fa-fw.fa-download
+          | Export

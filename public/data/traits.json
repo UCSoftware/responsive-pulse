@@ -1,0 +1,36 @@
+{
+    "Transparency e/o Privacy": {
+        "fullTitle": "Transparency over Privacy",
+        "blurb": "In the past, information was the currency of power: hard to come by and hard to spread. In the industrial-era environment, organizations guarded information carefully, and leveraged their information as a competitive advantage.\n\nToday, we have access to so much information that it’s become impossible to predict which information might be useful, or who might use that information in a productive way. In this world of abundant information and connectedness the potential benefits of trusting people who share the organization’s purpose to act on information as they see fit usually outweigh the potential risks of open information being used in counter-productive ways."
+    },
+
+    "Emergence e/o Planning": {
+        "fullTitle": "Emergence over Planning",
+        "blurb": "In the past, planning was important because it was difficult to adjust course once decisions had been made, resources had been committed, and people and teams had been coordinated.\n\nToday, plans start losing value the moment they’re finished. Consequently, time and resources devoted to planning are a less valuable investment than embracing agile methods that encourage experimentation and fuel rapid learning. Responsive organizations focus on the long term, and plan only to adapt in response to the constantly changing environment around them."
+    },
+
+    "Networks e/o Hierarchies": {
+        "fullTitle": "Network over Hierarchies",
+        "blurb": "In the past, hierarchies created order and clarity of authority, rank, and power. They reinforced a single primary connection: manager to worker, and enabled a command and control style of leadership.\n\nToday, technology and connectivity has increased our ability to self-organize, collaborating more easily across internal and external organizational boundaries. Working as a network allows us to organize with many different kinds of connections, and increased autonomy."
+    },
+
+    "Adaptivity e/o Efficiency": {
+        "fullTitle": "Adaptivity over Efficiency",
+        "blurb": "In the past, organizations maximized their output by optimizing productivity, reliability, and efficiency. These systems rely on methods and infrastructure that are inflexible by design.\n\nToday, organizations need to be designed for change and continual learning. Rather than seeking consistency, adaptive systems increase divergence and difference, in the hopes that one novel idea, product, or method will be the one we need in the new world."
+    },
+
+    "Purpose e/o Profit": {
+        "fullTitle": "Purpose over Profit",
+        "blurb": "In the past, the goal for many organizations was creating economic value for shareholders or owners. In other words, “making money”, and quite often with a short-term lens. While many have been hugely successful at this, it has often involved trade-offs: diminishing public trust in organizations across many industries; shortening life expectancy of organizations; plummeting levels of employee engagement; and damaging the environment around us.\n\nToday people are looking for organizations that have a purpose broader than just making money. Rather than viewing profit as the primary goal of an organization, progressive leaders see profit as a byproduct of success. They aim to do well by doing good. A clear and visionary purpose — the organization’s dent in the universe — brings together and organizes stunning talent, committed shareholders, partners, and communities."
+    },
+
+    "Empowering e/o Controlling": {
+        "fullTitle": "Empowering over Controlling",
+        "blurb": "In the past, a limited number of people held the power and understanding necessary to steer the organization and what was said about it. Control was forced through centralized, top down decision-making. Corporate Communications, IT departments, and rigid processes controlled what people said and did. The higher up the pyramid you were, the more power you had. This makes sense in a world where a select few people are most likely to have the knowledge and experience necessary to make the best decisions.\n\nToday, that is no longer the case.\n\nCircumstances and markets change rapidly as information flows faster. Now the people with the best insight and decision-making ability are often people closest to the customers, on the front line, or even ‘outside’ the typical organizational boundaries. Instead of controlling an organization through process and hierarchy – where the best possible outcome is “meeting plan” – Responsive organizations achieve surprising successes by empowering their teams."
+    },
+
+    "N/A": {
+        "fullTitle": "Nothing, yet.",
+        "blurb": "We don't yet have enough information to make a determination about how your organization identifies.\n\nCheck back once more responses have come in!"
+    }
+}

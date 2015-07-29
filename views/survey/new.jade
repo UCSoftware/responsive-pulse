@@ -1,0 +1,45 @@
+extends /layouts/auth_base
+
+include /partials/formcomponents
+
+block content
+  main
+    section
+      .row
+        .card.card-half.card-center.card--create
+          .card-body
+            h1.card-title Create New Survey
+            form.form(method="post")
+              if messages.error
+                ul.form--errors
+                  for error in messages.error
+                    li= error
+              if messages.success
+                ul.form--success
+                  for success in messages.success
+                    li= success
+              .form--group
+                label.form--element.form--element-text
+                  +input-text("title", "e.g., June Responsive Inquiry", form["title"] || "", "Survey Name", false, true)(autofocus="")
+              .form--group
+                label.form--element.form--element-select
+                  +input-select("orgSize", orgSizes, "How many people work within your organization?", "", true)
+                label.form--element.form--element-text
+                  +input-text("orgAge", "in years", "", "How old is your organization?", false, true)(type="number")
+                label.form--element.form--element-select
+                  +input-select("industry", industries, "What primary industry does your organization work within?", "", true)
+              .form--group
+                label.form--element.form--element-text
+                  +input-text("orgLeader", "e.g., John Smith", "", "What is the name of the person who leads this organization?", false, true)
+                label.form--element.form--element-text
+                  +input-text("orgLeaderRole", "e.g., Director of Marketing", "", "What is their title?", false, true)
+              +input-textarea("welcomeMessage", "Please take this survey...", "", "Provide a welcome message that users will see upon first visiting the survey (formatted using <a href=\"http://daringfireball.net/projects/markdown/basics\" target=\"_blank\">Markdown</a>):", false, 16).
+                Today's largest and most important organizations face two critical challenges: First, the world around them is changing faster than ever, and second, their own scale and complexity are working against them. To be successful in the future, we, as other organizations, need to strive to become more responsive – responsive to our customers, culture, competition, technology, regulation, and all other forces of disruption.
+
+                To help us think about the future in a careful, deliberate way as we map out our vision for the future, we’re administering a brief survey to determine how responsive we are as an organization today. We think of it as taking our company’s ‘pulse.’ *The survey is fully anonymous* and will help us understand our strengths, biases, values, capabilities, and patterns of working.
+
+                Our understanding requires everyone’s participation and honest input. So please participate, _it only takes five minutes to complete._
+              .form--group
+                label.form--element.form--element-textarea
+              input(type="hidden", name="_csrf", value=csrfToken)
+              button(type="submit").button.button--primary Create

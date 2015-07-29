@@ -1,0 +1,22 @@
+mixin input-radio(name, options, label, value)
+    if messages.error
+        - errors = messages.error[0];
+        if typeof errors[name] !== 'undefined'
+            - error = errors[name]
+        else
+            - error = undefined
+
+    .form--area.form--area-stacked
+        if label
+            .form--element-label= label
+        .form--element-radio-options
+            each val, key in options
+                label.form--element.form--element-radio
+                    input.form--element-control(type="radio", name=name, value=key, checked=((messages.field && messages.field[0][name] == key) || (value && value == key) ? true : false))&attributes(attributes)
+                    .form--element-value=val
+        if error
+            .form--area-errors
+                ul.form--element-invalid-message.filled
+                    li.parsley-required= error
+        else
+            .form--area-errors

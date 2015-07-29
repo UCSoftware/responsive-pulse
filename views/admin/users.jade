@@ -1,0 +1,40 @@
+extends /layouts/auth_base
+
+block content
+  main
+    section
+      .row
+        .card.card-full.card-table
+          .card-body
+            table.table--list
+              thead
+                tr
+                  th User Count
+                  th Response Count
+                  th Average Score
+              tbody
+                tr
+                  td= totals.users
+                  td= totals.responses
+                  td= (totals.score * 100 ).toFixed( 2 ) + '%'
+      .row
+        .card.card-full.card-table
+          .card-body
+            table.table--list.sortable
+              thead
+                tr
+                  th(class="sorting-asc" data-sort="string-ins", data-sort-default="asc", data-sort-dir="asc") Email
+                  th(data-sort="string-ins", data-sort-default="desc") Name
+                  th(data-sort="string-ins", data-sort-default="desc") Organization
+                  th(data-sort="string-ins", data-sort-default="desc") Activated
+              tbody
+                each user in userList
+                  tr
+                    td
+                      a(href='/admin/user/' + user.id, title=user.email)= user.email
+                    td
+                      span= user.profile.name || ''
+                    td
+                      span= user.profile.organization || ''
+                    td
+                      span= user.activated ? 'Yes' : 'No'

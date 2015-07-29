@@ -1,0 +1,42 @@
+extends /layouts/auth_base
+include /partials/modal
+include /survey/header
+
+block content
+  +modal('modal--share')
+    include /partials/modals/share
+
+  main
+      section
+        +header
+          .results--nav-menu
+            if typeof survey !== 'undefined' && survey.responseCount
+              a.results--nav-menu-item(href='/view/' + survey.key, class=is([new RegExp('/view/' + survey.key + '$'), 'is-active']))
+                i.fa.fa-bookmark
+                | Overview
+              a.results--nav-menu-item(href='/view/' + survey.key + "/detail", class=is(['/view/' + survey.key + '/detail', 'is-active']))
+                i.fa.fa-bar-chart
+                | Detailed Results
+        .ovw-container
+          if typeof survey !== 'undefined' && survey.responseCount
+            .g--row
+              .ovw-card-rowHeader.sticky-header: span Responsiveness
+                  .chart.bar.responsiveness(data-margins=",,,40")
+            .g--row
+              .g--half.identifies-most
+                script.template(type="text/html").
+                  <h3>Your organization identifies <em>most</em> with:</h3>
+                  <h1><%= trait.fullTitle %></h1>
+                  <div><%= marked(trait.blurb) %></div>
+              .g--half.g--last.identifies-least
+                script.template(type="text/html").
+                  <h3>Your organization identifies <em>least</em> with:</h3>
+                  <h1><%= trait.fullTitle %></h1>
+                  <div><%= marked(trait.blurb) %></div>
+          else
+            .g--row
+              .g--full.no-responses
+                h2 Waiting for responses…
+                h3
+                  a(href='/about') Learn more
+                  |  about Responsive OS.

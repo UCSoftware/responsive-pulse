@@ -1,0 +1,97 @@
+@mixin button-generator($color) {
+    background: $color;
+    color: color-contrast($color);
+    border: 0;
+
+    &:hover {
+        background: lighten($color, 5%);
+
+        color: contrast-color($color, $gray, $white);
+    }
+}
+
+.button {
+    @include button-generator($white);
+
+    display: inline-block;
+    padding: 0.75em 2em;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: none;
+    font-family: $sans;
+    font-size: inherit;
+    cursor: pointer;
+    line-height: 1rem;
+
+    &:disabled,
+    &.button--disabled {
+        cursor: default;
+        opacity: 0.5;
+    }
+
+    + .button {
+        margin-left: 1em;
+    }
+
+    i {
+        margin-right: 0.55em;
+        margin-left: -0.55em;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.button--primary {
+    @include button-generator($blue);
+    text-shadow: none;
+    color: $white;
+}
+
+.button--action {
+    @include button-generator($green);
+    text-shadow: none;
+    color: $white;
+}
+
+.button--danger {
+    @include button-generator($red);
+    text-shadow: none;
+}
+
+.button--large {
+    font-size: 1.2em;
+    padding: 1em 2.2em;
+}
+
+.button--form-change {
+    background: none;
+    border: 0;
+    display: inline;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    outline-offset: 0;
+    color: $gray-light;
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover {
+        color: $gray;
+    }
+}
+
+.form--invalid {
+    .button--primary:disabled,
+    .button--primary:disabled:hover {
+        @include button-generator($gray-light);
+        color: $gray-lighter;
+        opacity: 1;        
+    }
+}
+
+.button--icon {
+    padding: 0.75rem 1.5rem 0.75rem 1.25rem
+}

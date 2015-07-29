@@ -1,0 +1,25 @@
+mixin nav
+  if user
+      .nav--menu
+        .nav--menu-item.dropdown
+          .dropdown--menu-parent
+            = user.profile.name
+          .dropdown--menu
+            a.dropdown--menu-item(href="/dashboard", class=is(['/dashboard', 'is-active'])) My Surveys
+            if user.hasRole( 'admin' )
+              a.dropdown--menu-item(href="/admin/users", class=is(['/admin/user', 'is-active'])) All Users
+            a.dropdown--menu-item(href="/account", class=is(['/account', 'is-active'])) My Account
+            a.dropdown--menu-item(href="/logout") Sign Out
+  else
+    .nav--menu
+      a.nav--menu-item(href="/login" class=is(['/login', 'is-active'])) Log In
+      a.nav--menu-item.nav--menu-cta(href="/signup" class=is(['/signup', 'is--active'])) Sign Up
+
+nav.nav
+    .nav--container
+        a(href="/")
+            .nav--logo
+                .nav--logo-img
+                    img(src="/img/logo.svg")
+                .nav--logo-title Responsive <strong>Pulse</strong>
+        +nav

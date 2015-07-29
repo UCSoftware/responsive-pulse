@@ -1,0 +1,6 @@
+extends base
+
+prepend scripts
+    if survey
+        script| var survey = '#{survey.key}';
+    script(src="/js/bundle.js")

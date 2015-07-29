@@ -1,0 +1,21 @@
+mixin input-text(name, placeholder, value, label, readonly, stacked)
+    if messages.fieldErrors
+        - errors = messages.fieldErrors[0]
+        if errors[name]
+            - error = errors[name].type
+        else
+            - error = undefined
+
+    .form--area(class=(stacked == true ? "form--area-stacked" : ""))
+        label.form--element.form--element-text(class=(stacked == true ? "form--element-text-stacked" : ""), class=(error ? "form--element-invalid" : ""))
+            if label
+                .form--element-label= label
+            if readonly
+                +form-change-button()
+            input.form--element-control(type="text", name=name, value=(messages.field && messages.field[0][name] ? messages.field[0][name] : value), placeholder=placeholder, readonly=(readonly == true ? "readonly" : undefined))&attributes(attributes)
+        if error
+            .form--area-errors
+                ul.form--element-invalid-message.filled
+                    li.parsley-required= ({ 'required': 'This field is required.' })[error]
+        else
+            .form--area-errors

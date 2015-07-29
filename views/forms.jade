@@ -1,0 +1,59 @@
+extends layouts/base
+
+include partials/formcomponents
+
+block content
+  main
+    section
+      .row
+        .card.card-full
+          .card-body
+            h2.card-title Form Elements
+            .form
+              .form--group
+                label.form--element.form--element-text
+                  span.form--element-label Text Input
+                  input.form--element-control(type="text", placeholder="Placeholder")
+                label.form--element.form--element-textarea
+                  span.form--element-label Text Area
+                  textarea.form--element-control
+              .form--group
+                .form--element-label Radio Buttons
+                .form--element.form--element-radio
+                  input(type="radio", name="radio", value="r1").form--element-control#r1
+                  label(for="r1").span.form--element-value Radio Choice 1
+                .form--element.form--element-radio
+                  input(type="radio", name="radio", value="r2").form--element-control#r2
+                  label(for="r2").span.form--element-value Radio Choice 2
+              .form--group
+                .form--element-label Checkboxes
+                .form--element.form--element-checkbox
+                  input(type="checkbox", name="check", value="c1").form--element-control#c1
+                  label(for="c1").span.form--element-value Checkbox 1
+                .form--element.form--element-checkbox
+                  input(type="checkbox", name="check", value="c2").form--element-control#c2
+                  label(for="c2").span.form--element-value Checkbox 2
+              .form--group
+                .form--element-label Sliders
+                +input-slider("slider", 0, 50, "Low", "High")
+              .form--group
+                label.form--element.form--element-select
+                  span.form--element-label Select Box
+                  select.form--element-control
+                    option(selected) Option 1
+                    option Option 2
+                    option Option 3
+              .form--group
+                span.form--element-label Grid Select
+                +input-gridselect("Grid Select", {
+                    "gs1": "Our purpose serves and mobilizes a community of users and partners.",
+                    "gs2": "Our purpose empowers my decision making."
+                })
+              .form--group
+                span.form--element-label Buttons
+                a(href="#").button Default Button
+                a(href="#").button.button--primary Primary Button
+                a(href="#").button.button--danger Danger Button
+
+block require
+  | require(['main']);

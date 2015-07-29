@@ -1,0 +1,14 @@
+mixin input-slider(name, label, min, max, minLabel, maxLabel, value, stacked)
+    .form--area(class=(stacked == true ? "form--area-stacked" : ""))
+      label.form--element.form--element-slider
+          if label
+              .form--element-label= label
+          .form--element-control
+              if minLabel || maxLabel
+                  .rangeslider-labels
+                      .rangeslider-label-min=minLabel
+                      .rangeslider-label-max=maxLabel
+              .range-value
+                  .range-value-label= min
+                  .range-value-arrow
+              input(type="range", name=name, min=min, max=max, value=(value ? value : min))&attributes(attributes)

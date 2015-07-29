@@ -1,0 +1,6 @@
+mixin input-single-checkbox(name, value, label, stateValue)
+    .form--area
+        if label
+            label.form--element.form--element-checkbox
+                input.form--element-control(type="checkbox", name=name, value=value, checked=(stateValue == value ? true : false))
+                .form--element-value=label

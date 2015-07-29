@@ -1,0 +1,13 @@
+// breakpoints
+$widescreen-breakpoint: max-width 1280px;
+$tablet-breakpoint: max-width 1024px;
+$mobile-breakpoint: max-width 768px;
+$small-mobile-breakpoint: max-width 480px;
+
+//global breakpoint classes
+
+.breaktext {
+    @include breakpoint($tablet-breakpoint) {
+        display: none;
+    }
+}

@@ -1,0 +1,69 @@
+.progress {
+    max-width: 50%;
+    
+    @include media(("<phone")) {
+        max-width: none;
+    }
+}
+
+.progress-nav {
+    margin-top: 2em;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: $gray-lighter;
+    border-radius: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0;
+
+    .progress-bar-completed {
+        height: 5px;
+        background-color: $green;
+        border-radius: 5px;
+    }
+}
+
+.progress-label {
+    margin-top: 0.5em;
+    color: $gray-light;
+    margin-bottom: 2em;
+}
+
+.progress-pagination {
+    margin-top: 0.5em;
+    color: $gray-light;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+
+    a {
+        color: $blue;
+        text-decoration: none;
+        
+        &:hover {
+            color: darken($blue, 10%);
+        }
+    }
+}
+
+.progress-pagination-first {
+    float: left;
+}
+
+.progress-pagination-last {
+    float: right;
+}
+
+.progress-pagination-center {
+    .pagination-link {
+        display: inline-block;
+        margin: 0 1em;
+    }
+
+    span.pagination-link {
+        visibility: hidden;
+    }
+}

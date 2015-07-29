@@ -1,0 +1,200 @@
+$headroom: 1em;
+$inset: 1.5em;
+
+.survey-info {
+    color: $gray-light;
+}
+
+.ovw-container {
+    width: 100%;
+    background: $white;
+    border: 1px solid $gray-lighter;
+    border-top: 0;
+    padding: 0 $inset $headroom;
+    border-radius: 0 0 3px 3px;
+    margin-bottom: $headroom;
+    padding-top: 0;
+}
+
+.ovw-card--breakout {
+    margin: -0.5em -1.5em;
+}
+
+.ovw-card-rowHeader {
+    padding: 0.5em 0 0;
+    overflow: hidden;
+    background: $white;
+
+    > span {
+        display: block;
+        width: 100%;
+        color: $gray;
+        border-bottom: 1px solid $gray-lighter;
+    }
+}
+
+.ovw-scoring {
+    float: right;
+    text-align: center;
+}
+
+.ovw-scoring--inner {
+    border-radius: $default-border-radius;
+    background: $off-white;
+}
+
+.ovw-scoring--reset {
+    color: $gray-light;
+    margin: 0.5rem 0;
+    display: none;
+
+    &.is-shown {
+        display: block;
+    }
+}
+
+.ovw-scoring--percentile {
+    display: block;
+    margin: 0.5rem 0;
+
+    &.is-hidden {
+        display: none;
+    }
+}
+
+.ovw-scoring--responses,
+.ovw-scoring--score {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0.75rem 1rem 0.25rem;
+    text-align: center;
+
+    .number {
+        font-size: $scale-xlarge;
+        padding: 0.25rem 0;
+    }
+}
+
+.ovw-scoring--responses {
+    border-right: 1px solid $gray-lighter;
+
+    .number {
+        display: inline;
+    }
+}
+
+.ovw-scoring--responses-total {
+    color: $gray-light;
+    padding-left: 0.25em;
+    display: none;
+
+    &.is-shown {
+        display: inline-block;
+    }
+}
+
+.ovw-scoring--score-diff {
+    vertical-align: middle;
+    padding-right: 1rem;
+    padding-bottom: 0.25em;
+    color: $gray;
+    display: none;
+
+    &.is-shown {
+        display: inline-block;
+    }
+}
+
+.score-diff-up,
+.score-diff-down {
+    font-size: $scale-small;
+    line-height: 1em;
+
+    &.score-diff-num {
+        font-size: $scale-normal;
+        line-height: 1em;
+    }
+}
+
+.score-diff-up,
+.score-diff-down,
+.score-diff-num {
+    opacity: 0;
+
+    &.is-shown {
+        opacity: 1;
+    }
+}
+
+.score-diff-up {
+    color: $green;
+}
+
+.score-diff-down {
+    color: $red;
+}
+
+.ovw-scoring--label {
+    color: $gray-light;
+}
+
+.ovw-header {
+    background: $white;
+    border-left: 1px solid $gray-lighter;
+    border-right: 1px solid $gray-lighter;
+    z-index: 2000;
+}
+
+.ovw-header-inner {
+    padding: 2em 1.5em 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.is_stuck {
+    z-index: 1000;
+}
+
+.verbatims {
+    .verbatims--show-more {
+        display: block;
+    }
+
+    .verbatims--show-less, .verbatims--list {
+        display: none;
+    }
+
+    &.verbatims--expanded {
+        .verbatims--list {
+            display: block;
+        }
+
+        .verbatims--show-more {
+            display: none;
+        }
+
+        .verbatims--show-less {
+            display: block;
+        }
+    }
+
+    &.verbatims--no-collapse {
+        .verbatims--show-more, .verbatims--show-less {
+            display: none;
+        }
+
+        .verbatims--list {
+            display: block;
+        }
+    }
+}
+
+.results--section {
+    padding-bottom: 3rem;
+}
+
+.structure--filter-team {
+    text-align: right;
+    color: $gray-light;
+    margin: 1.5em 0 0;
+}

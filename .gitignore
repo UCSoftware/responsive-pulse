@@ -1,0 +1,14 @@
+# cache files
+.sass-cache
+migrations/.migrate
+
+# installed packages
+node_modules
+
+# project/compiled files
+design
+public/js
+public/css/main.css
+
+# configuration
+config/local.js

@@ -1,0 +1,402 @@
+.chart {
+    position: relative;
+
+    .reset {
+
+        font-size: $scale-small;
+        position: absolute;
+        top: -4em;
+        right: 0;
+        background: $gray-lighter;
+        color: $gray;
+        padding: 0.5em 1em;
+        visibility: hidden;
+
+        &.is-shown {
+            visibility: visible;
+        }
+
+        &:hover {
+            cursor: pointer;
+            opacity: 0.9;
+        }
+    }
+}
+
+.chart-title {
+    font-size: $scale-large;
+    color: $gray-light;
+}
+
+.bignumber {
+    font-size: 4em;
+    margin: 0.4em 0 0.5em;
+    text-align: center;
+
+    @include media("<tablet") {
+        font-size: 4.5em;
+    }
+
+}
+
+p .number {
+    font-size: inherit;
+}
+
+.responses-label {
+    color: $gray-light;
+    display: inline-block;
+    width: 100%;
+
+    &:first-child {
+        margin-top: 0.25em;
+    }
+
+    .number {
+
+        background: $gray-lighter;
+        padding: 0.25em 0.5em;
+        color: $gray-dark;
+        margin-left: 0.5em;
+        margin-top: 0;
+        margin-bottom: 0;
+        float: right;
+
+        &.current {
+            background: $blue;
+            color: $white;
+        }
+    }
+}
+
+.stacked {
+    .bar {
+        rect {
+            shape-rendering: crispEdges;
+        }
+
+        rect:not(.subset) {
+            fill: $gray-light;
+        }
+
+        .subset:hover {
+            cursor: pointer;
+            opacity: 0.9;
+        }
+
+        .selected {
+            fill: $blue;
+        }
+
+        text {
+            font-size: $scale-small;
+            font-family: $mono;
+        }
+    }
+
+    .y.label {
+        font-size: $scale-small;
+        fill: $gray-light;
+    }
+
+}
+
+.bar {
+    text {
+        font-size: $scale-small;
+        fill: $gray-light;
+    }
+
+    rect {
+        shape-rendering: crispEdges;
+    }
+
+    rect:not(.subset) {
+        fill: $gray-light;
+    }
+
+    .selected {
+        fill: $blue;
+    }
+
+    .domain {
+        fill: none;
+        stroke: $gray-light;
+        stroke-width: 1px;
+        shape-rendering: crispEdges;
+    }
+
+    &[filterable] {
+        .subset:hover {
+            cursor: pointer;
+            opacity: 0.9;
+        }
+    }
+
+    .y.axis {
+
+        text {
+            font-family: $mono;
+        }
+
+    }
+}
+
+.matrixplot {
+    .domain {
+        fill: none;
+        stroke: #b3b3b3;
+        stroke-width: 1px;
+        shape-rendering: crispEdges;
+    }
+
+    .y.label {
+        transform: rotate(-90deg);
+    }
+
+    circle {
+        opacity: 0.8;
+    }
+
+    text {
+        font-size: $scale-small;
+        fill: $gray-light;
+    }
+}
+
+.tenure .tick text {
+    font-family: $mono;
+}
+
+.numberline {
+    p {
+        font-style: italic;
+    }
+
+    .circle-0 {
+        fill: $blue;
+    }
+
+    .circle-1 {
+        fill: $yellow;
+    }
+
+    .circle-only {
+        fill: $green;
+    }
+
+    .line {
+        fill: $gray-light;
+    }
+
+    text {
+        font-size: $scale-small;
+        fill: $gray-light;
+    }
+}
+
+.line {
+    .line {
+        fill: none;
+        stroke: #b3b3b3;
+        stroke-width: 3px;
+    }
+
+    .axis {
+        .tick line {
+            stroke: #b3b3b3;
+            stroke-width: 1px;
+            shape-rendering: crispEdges;
+        }
+    }
+
+    .domain {
+        fill: none;
+        stroke: $gray-light;
+        stroke-width: 1px;
+        shape-rendering: crispEdges;
+    }
+
+    text {
+        font-size: $scale-small;
+        fill: $gray-light;
+    }
+
+    .grid {
+        .tick line {
+            stroke: $gray-lighter;
+            stroke-width: 1px;
+            shape-rendering: crispEdges;
+        }
+    }
+
+    .focus {
+        fill: none;
+    }
+
+    .overlay {
+        fill: none;
+        pointer-events: all;
+    }
+}
+
+.line--key {
+    position: absolute;
+    right: 20px;
+    top: 7.5%;
+    pointer-events: none;
+    margin: 0 0 0 60px;
+    background: #fff;
+    border: 1px solid $gray-lighter;
+    border-radius: 3px;
+    padding: 12px 18px;
+
+    .color {
+        display: inline-block;
+        width: 12px;
+        height: 4px;
+        border-radius: 20px;
+        vertical-align: middle;
+        margin: 0 8px 0 0;
+    }
+
+    .label {
+        font-size: $scale-small;
+    }
+}
+
+.line--popup {
+    pointer-events: none;
+    position: absolute;
+    margin: 0 0 0 60px;
+    background: #fff;
+    border: 1px solid $gray-lighter;
+    border-radius: 3px;
+    padding: 4px 12px;
+
+    .color {
+        display: inline-block;
+        width: 10px;
+        height: 4px;
+        border-radius: 20px;
+        vertical-align: middle;
+        margin: 0 6px 0 0;
+    }
+
+    .label, .value {
+        font-size: $scale-small;
+    }
+
+    .value {
+        margin: 0 0 0 10px;
+        font-weight: 700;
+    }
+}
+
+.legend {
+    margin: 0 1em;
+
+    .legend-item {
+        display: inline-block;
+        margin-right: 1em;
+    }
+
+    .legend-item:before {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 0.5em;
+    }
+
+    .leadership {
+        color: $blue;
+
+        &:before {
+            background: $blue;
+        }
+    }
+
+    .team {
+        color: $yellow;
+
+        &:before {
+            background: $yellow;
+        }
+    }
+
+    .agreement {
+        display: none;
+        color: $green;
+
+        &:before {
+            background: $green;
+        }
+
+        &.show {
+            display: inline-block;
+        }
+    }
+}
+
+.radar {
+
+    @include media(("<phone")) {
+        display: none;
+    }
+
+    text {
+        pointer-events: none;
+    }
+
+    .legend {
+        font-size: $scale-small;
+        fill: $gray-light;
+        font-family: $sans;
+
+        &.percent {
+            font-family: $mono;
+        }
+
+    }
+
+}
+
+.verbatims--list {
+    max-width: 40em;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: verbatim-counter;
+
+    li {
+        margin-bottom: 1.5em;
+        position: relative;
+        padding-left: 2em;
+
+        &:before {
+            content: counter(verbatim-counter);
+            counter-increment: verbatim-counter;
+            font-size: 1em;
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2em;
+            text-align: left;
+            color: $gray-light;
+        }
+    }
+
+}
+
+.data-controls {
+    select {
+        width: 12em;
+        margin-right: 0;
+    }
+}
+
+svg {
+    max-width: 100%;
+}

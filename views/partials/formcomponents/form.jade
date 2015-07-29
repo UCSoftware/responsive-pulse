@@ -1,0 +1,22 @@
+mixin form-group(readonly)
+    form.form--group(class=(readonly ? "form--readonly" : undefined), method="POST")&attributes(attributes)
+        block
+
+mixin form-buttons()
+    .form-row
+        .form-row-button
+            button.button.button--clear-changes Clear Changes
+        .form-row-button.last
+            button.button.button--primary Save Changes
+    .form-feedback
+        .form-submitted-success-label
+            i.fa.fa-check
+            span Changes saved!
+        .form-submitted-fail-label
+            i.fa.fa-times
+            span Could not save changes. Please try again.
+
+mixin form-change-button()
+    .form--element-status
+        span.form--element-edited-label <span class="form--element-edited-label-text">edited</span>
+        button.button--form-change change

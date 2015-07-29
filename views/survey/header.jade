@@ -1,0 +1,46 @@
+include nav
+
+mixin header
+  .sticky-nav
+    .results--nav
+      +surveyNav
+        if block
+          block
+    .ovw-header
+      .ovw-header-inner
+        if typeof survey !== 'undefined' && survey.responseCount
+          .ovw-scoring
+            .ovw-scoring--inner
+              .ovw-scoring--responses
+                .chart.number.responses
+                  .data-placeholder--number 0
+                .ovw-scoring--responses-total
+                  | of 0
+                .ovw-scoring--label
+                  | Responses
+              .ovw-scoring--responses
+                .chart.number.incomplete
+                  .data-placeholder--number 0
+                .ovw-scoring--label
+                  | Incomplete
+              .ovw-scoring--score
+                .chart.number.score
+                  .data-placeholder--number 0
+                .ovw-scoring--label
+                  | Score
+              .ovw-scoring--score-diff
+                  .score-diff-up &#9650;
+                  .score-diff-num
+                    | 0%
+                  .score-diff-down &#9660;
+            .ovw-scoring--percentile.number.percentile
+            a.ovw-scoring--reset Reset Filters
+        h2.survey-title= survey.title
+        .survey-info
+          if survey.createdAt
+            | Created on 
+            = moment(survey.createdAt).format('MMM D, YYYY') 
+            |  &middot; 
+          | Last updated 
+          span.date-underline(title = survey.lastUpdate ? moment(survey.lastUpdate).format('MMM D, YYYY') : 'Never')=moment(survey.lastUpdate).fromNow()
+        .clearfix

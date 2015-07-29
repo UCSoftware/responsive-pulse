@@ -1,0 +1,29 @@
+extends /layouts/base
+
+include /partials/formcomponents
+
+block content
+  main
+    section
+      .auth--form
+        h1 Log In
+        form.form(method="post")
+          if messages.error
+            ul.form--errors
+              for error in messages.error
+                li= error
+          if messages.success
+            ul.form--success
+              for success in messages.success
+                li= success
+          .form--group
+            label.form--element.form--element-text
+              //- The 'email' field is named 'username' because that is what the
+              //- passport library requires to validate on req.logIn.
+              +input-email("username", "E-mail Address", messages.email)
+            label.form--element.form--element-text
+              +input-password("password", "Password")
+            a(href="/forgot").login--forgot Forgot?
+          input(type="hidden", name="_csrf", value=csrfToken)
+          button(type="submit").button.button--primary.login--submit Submit
+    .login--signup Need an account? <a href="/signup">Sign up here</a>

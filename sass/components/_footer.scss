@@ -1,0 +1,44 @@
+.footer {
+    @include container;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-top: 1em;
+    color: $gray-light;
+    border-top: 1px solid $gray-lighter;
+}
+
+.footer--credit {
+    float: left;
+    font-size: $scale-small;
+    
+    @include media(("<phone")) {
+        padding-left: 1em;
+    }
+}
+
+.footer--legal {
+    float: right;
+    font-size: $scale-small;
+
+    a:hover {
+        color: darken($gray-light, 15%);
+    }
+    
+    @include media(("<phone")) {
+        padding-right: 1em;
+    }
+}
+
+.footer--links {
+    float: right;
+
+    ul {
+        list-style: none;
+
+        li {
+            display: inline;
+        }
+
+    }
+
+}

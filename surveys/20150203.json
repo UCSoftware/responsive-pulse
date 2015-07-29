@@ -1,0 +1,223 @@
+{
+    "pages": [
+        {
+            "title": "First, tell us a little about yourself",
+            "header": "This survey takes approximately 5 minutes to complete.",
+            "fields": [
+                {
+                    "type": "slider",
+                    "label": "How long have you worked at this organization (in years)?",
+                    "name": "org_years",
+                    "required": true,
+                    "min": {
+                        "label": "< 1",
+                        "value": "0"
+                    },
+                    "max": {
+                        "label": "25+",
+                        "value": "25"
+                    }
+                },
+                {
+                    "type": "teamselect",
+                    "label": "What team and/or department do you work in?",
+                    "name": "team",
+                    "required": true
+                },
+                {
+                    "type": "slider",
+                    "label": "How many layers of management are you below {{orgLeader}}?",
+                    "help": "If you're not sure, take your best guess.",
+                    "name": "management_layers",
+                    "required": true,
+                    "min": {
+                        "label": "I report directly",
+                        "value": "0"
+                    },
+                    "max": {
+                        "label": "20+",
+                        "value": "20"
+                    }
+                },
+                {
+                    "type": "radio",
+                    "label": "We are the market leaders.",
+                    "name": "org_position",
+                    "required": true,
+                    "options": {
+                        "leading": "Agree",
+                        "following": "Disagree"
+                    }
+                },
+                {
+                    "type": "radio",
+                    "label": "We are growing faster than our competitors.",
+                    "name": "org_traction",
+                    "required": true,
+                    "options": {
+                        "advancing": "Agree",
+                        "declining": "Disagree"
+                    }
+                },
+                {
+                    "type": "radio",
+                    "label": "We are more profitable than our competitors.",
+                    "name": "org_profitability",
+                    "required": true,
+                    "options": {
+                        "agree": "Agree",
+                        "disagree": "Disagree"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Q1 — Purpose even over Profit",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "peop1": "We rarely talk about our financial success (or failure), but instead check ourselves against progress toward our organization’s purpose",
+                        "peop2": "I've turned down lucrative offers from other companies because I'm committed to this organization's purpose",
+                        "peop3": "I am surrounded by amazing talent – partners and colleagues – and we’re all here to pursue our organization’s purpose",
+                        "peop4": "I know exactly how my goals or objectives connect to our organization’s purpose",
+                        "peop5": "In the absence of a clear directive, I use our organization’s purpose to make tough decisions and do the right thing"
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "peop_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Q2 — Empowering even over Controlling",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "eeoc1": "When it comes to my success, my customers’ satisfaction is more important than my superiors’ opinions",
+                        "eeoc2": "I have a budget, and I’m free to spend it the way I see fit",
+                        "eeoc3": "I have the power to abandon work I know isn't generating any value",
+                        "eeoc4": "I’m able to deviate from the conventions that govern my work, including the software, hardware, tools and practices I use to get it done",
+                        "eeoc5": "When it's not clear who has the authority to make a decision, I feel safe asking for forgiveness later"
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "eeoc_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Q3 — Emergence even over Planning",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "eeop1": "We rarely have a “big reveal” – instead we make many small changes",
+                        "eeop2": "I've been part of a team working on an experimental, unproven product with no clear roadmap",
+                        "eeop3": "I am allowed to make changes to my team's basic structure (size, people, roles) with their consent",
+                        "eeop4": "It is easy to release or ship products and services to customers",
+                        "eeop5": "We use cloud-based, real-time collaborative software instead of passing around e-mail attachments"
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "eeop_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Q4 — Networks even over Hierarchies",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "neoh1": "I have frequent contact with my customers",
+                        "neoh2": "When more people use our products, they improve",
+                        "neoh3": "The people that review my performance are the ones that work closely with me",
+                        "neoh4": "Our products have real-time feedback mechanisms built-in",
+                        "neoh5": "I can easily ask people outside my team (even customers) for feedback on work when it's at an early stage"
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "neoh_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Q5 — Adaptivity even over Efficiency",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "aeoe1": "I am allowed to assume new responsibilities (even if they overlap with someone else), if it brings us closer to realizing our goal",
+                        "aeoe2": "My role is creative and I produce output directly, rather than rely on outside vendors",
+                        "aeoe3": "I’m rarely asked for projections – instead, I show results from customer-facing tests",
+                        "aeoe4": "I can be honest about my failures; I don’t need to put on “success theater”",
+                        "aeoe5": "We post or track our failures in a central location"
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "aeoe_verbatims"
+                }
+            ]
+        },
+        {
+            "title": "Q6 — Transparency even over Privacy",
+            "header": "",
+            "fields": [
+                {
+                    "type": "gridselect",
+                    "label": "Rate your level of agreement with the following statements.",
+                    "options": {
+                        "teop1": "I keep a task list and it’s open to anyone who wants to see it",
+                        "teop2": "Our workspace and working styles “default to open” – we use privacy as a tool, only when necessary",
+                        "teop3": "I can easily access the information I need to get my work done",
+                        "teop4": "Other teams in the organization know exactly how to work with our team, and what they’ll get out of an interaction",
+                        "teop5": "I share my work in progress before it’s been packaged for wide consumption"
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "label": "For the statements you disagreed with (either somewhat or strongly), what can the organization do to improve?",
+                    "name": "teop_verbatims"
+                }
+            ]
+        }
+    ],
+    "columns": [
+        {"title": "Purpose e/o Profit", "verbatims": "peop_verbatims"},
+        {"title": "Empowering e/o Controlling", "verbatims": "eeoc_verbatims"},
+        {"title": "Emergence e/o Planning", "verbatims": "eeop_verbatims"},
+        {"title": "Networks e/o Hierarchies", "verbatims": "neoh_verbatims"},
+        {"title": "Adaptivity e/o Efficiency", "verbatims": "aeoe_verbatims"},
+        {"title": "Transparency e/o Privacy", "verbatims": "teop_verbatims"}
+    ],
+    "overalls": [
+        ["peop1", "eeoc1", "eeop1", "neoh1", "aeoe1", "teop1"],
+        ["peop2", "eeoc2", "eeop2", "neoh2", "aeoe2", "teop2"],
+        ["peop3", "eeoc3", "eeop3", "neoh3", "aeoe3", "teop3"],
+        ["peop4", "eeoc4", "eeop4", "neoh4", "aeoe4", "teop4"],
+        ["peop5", "eeoc5", "eeop5", "neoh5", "aeoe5", "teop5"]
+    ],
+    "render": "even-over"
+}

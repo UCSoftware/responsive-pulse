@@ -1,0 +1,19 @@
+mixin progress(page, totalPages, nav, title)
+    .progress(class=nav ? " progress-nav" : "")
+        .progress-bar
+            .progress-bar-completed(style="width:" + (page / totalPages * 100) + "%")
+        if nav
+            .progress-pagination
+                .progress-pagination-first
+                    span.pagination-link First
+                .progress-pagination-last
+                    span.pagination-link Last
+                .progress-pagination-center
+                    span="Page " + page + " of " + totalPages
+        else
+            .progress-label
+              ="Page " + page + " of " + totalPages
+              if template
+                = template.title ? ": " + template.title : ""
+              else if title
+                = ": " + title

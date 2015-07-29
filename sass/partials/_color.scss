@@ -1,0 +1,82 @@
+// grays
+$black:             #000;
+$gray-darker:        lighten($black, 15%);
+$gray-dark:          lighten($black, 25%);
+$gray:              lighten($black, 50%);
+$gray-light:         lighten($black, 70%);
+$gray-lighter:       lighten($black, 90%);
+$off-white:          lighten($black, 98%);
+$white:             #fff;
+
+// project-specific colors
+$blue:              #5998e1;
+$blue-light:        #DDE4F3;
+$orange:            #f79420;
+$yellow:            #f1c40f;
+$green:             #38D187;
+$purple:            #9b59b6;
+$red:               #E13710;
+
+// domain-specific colors:
+.color-purpose {
+    color: mix($orange, $blue, 20%);
+}
+
+.color-people {
+    color: mix($orange, $yellow, 40%);
+}
+
+.color-process {
+    color: mix($orange, $green, 40%);
+}
+
+.color-product {
+    color: mix($orange, $purple, 40%);
+}
+
+.color-platform {
+    color: mix($orange, $red, 40%);
+}
+
+// color classes:
+.color-red {
+    color: mix($orange, $red, 40%);
+}
+
+.color-green {
+    // color: mix($orange, $green, 40%);
+    color: #38d187;
+}
+
+.color-blue {
+    color: #dde4fe;
+}
+
+.color-graph-a {
+    color: $green;
+}
+
+.color-graph-b {
+    color: $green;
+}
+
+// Color Functions!
+
+// Calculate brightness of a given color.
+@function brightness($color) {
+  @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114)) / 255 * 100%;
+}
+
+// Compares contrast of a given color to the light/dark arguments and returns whichever is most "contrasty"
+@function color-contrast($color, $dark: $black, $light: $white) {
+  @if $color == null {
+    @return null;
+  }
+  @else {
+    $color-brightness: brightness($color);  
+    $light-text-brightness: brightness($light);
+    $dark-text-brightness: brightness($dark);
+    
+    @return if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness), $light, $dark);  
+  }
+}

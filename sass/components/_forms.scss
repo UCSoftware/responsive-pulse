@@ -1,0 +1,629 @@
+//global defaults
+
+.form--element-dummy,
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    font-family: $sans;
+    color: $gray-dark;
+    background: $white;
+    border: 1px solid lighten($gray-light, 20%);
+    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 0.6em 1em 0.4em;
+
+    &:focus {
+        outline: none;
+        border: 1px solid lighten($blue, 20%);
+        box-shadow: 0 0 2px 0 $blue;
+    }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+div.form--element,
+label.form--element {
+    display: inline-block;
+    width: 100%;
+}
+
+.form--element-label {
+    margin-bottom: 0.5em;
+    color: $gray-dark;
+    display: block;
+}
+
+.form--element-invalid {
+    .form--element-control,
+    .form--element-control:focus {
+        border: 1px solid lighten($red, 20%);
+        box-shadow: 0 0 2px 0 $red;
+    }
+}
+
+.form--element-invalid-message.filled {
+    list-style: none;
+    margin-top: 0.25em;
+    margin-left: 11em;
+    font-size: $scale-small;
+    -webkit-font-smoothing: antialiased;
+    color: $red;
+    font-weight: normal;
+
+    @include media(("<phone")) {
+        margin-left: 0;
+    }
+}
+
+.form--area {
+    position: relative;
+
+    @include media(("<phone")) {
+        margin-bottom: 1em;
+    }
+}
+
+.form--area-stacked {
+    .form--element-invalid-message.filled {
+        margin-left: 0;
+    }
+}
+
+.form--element {
+    position: relative;
+
+    + .form--element {
+        margin-top: 0.5em;
+    }
+}
+
+// form layout classes
+
+.form--group {
+    margin-bottom: 3em;
+}
+
+.card-row {
+    .form--group {
+        margin-bottom: 0;
+    }
+}
+
+p + .form--group {
+    margin-top: 1em;
+}
+
+// form typography
+
+.form--subheader {
+    font-size: $scale-medium;
+    margin-bottom: 0.5em;
+}
+
+// read-only state
+
+.form-row {
+    @include row;
+    display: inline-block;
+    width: 100%;
+    margin-top: 1em;
+}
+
+.form-row-button {
+    @include span(6);
+    &.last {
+        float: right;
+        margin-right: 0;
+        text-align: right;
+    }
+}
+
+.form--readonly {
+    .form-row {
+        display: none;
+    }
+
+    &.form--readonly-active {
+        .form-row {
+            display: block;
+        }
+    }
+
+    .form--element-active {
+        .form--element-status {
+            display: none;
+        }
+    }
+
+    .form--element {
+        cursor: pointer;
+    }
+
+    .form--element:hover {
+        .button--form-change {
+            color: $gray;
+        }
+
+        .form--element-control:read-only {
+            border-color: $gray-lighter;
+            cursor: pointer;
+        }
+    }
+
+    @include media(("<phone")) {
+        .form--element-control:read-only {
+            border-color: $gray-lighter;
+            cursor: pointer;
+        }
+
+        .button--form-change {
+            display: none;
+        }
+    }
+}
+
+.form-feedback {
+    clear: both;
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    .fa {
+        margin-right: 0.5em;
+    }
+}
+
+.form-submitted-success-label {
+    display: none;
+    margin-top: 1em;
+    color: $green;
+}
+
+.form-submitted-fail-label {
+    display: none;
+    margin-top: 1em;
+    color: $red;
+}
+
+.form-submitted-success {
+    .form-submitted-success-label {
+        display: block;
+    }
+}
+
+.form-submitted-fail {
+    .form-submitted-fail-label {
+        display: block;
+    }
+}
+
+.form--password-confirm {
+    display: none;
+}
+
+.form--password-reveal {
+    position: absolute;
+    right: 0.5em;
+    top: 1.4em;
+    padding: 0 0.5em;
+    color: $gray-light;
+    cursor: pointer;
+
+    &:hover {
+        color: $gray;
+    }
+}
+
+.card-row-buttons {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: -0.5em;
+}
+
+.form--password-active {
+    .form--password-old {
+        display: none;
+    }
+
+    .form--password-confirm {
+        display: block;
+    }
+}
+
+.form--element-status {
+    display: inline-block;
+    position: absolute;
+    right: 0.5em;
+    margin-top: 0.6em;
+    color: $gray-light;
+}
+
+.form--element-edited-label {
+    display: none;
+
+    .form--element-edited-label-text {
+        color: $blue;
+    }
+}
+
+.form--element-edited {
+    .form--element-edited-label {
+        display: inline;
+    }
+
+    .button--form-change {
+        display: none;
+    }
+}
+
+.form--element-control:read-only:focus {
+    border-color: #fff;
+    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+// input grouping
+
+.form--element-bundled .form--element-control {
+    border-radius: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.form--element-bundled:first-of-type .form--element-control {
+    border-radius: 3px 3px 0 0;
+    margin-bottom: 0;
+}
+
+.form--element-bundled:last-of-type .form--element-control {
+    border-radius: 0 0 3px 3px;
+    margin-top: 0;
+    border-top: 0;
+}
+
+.form--element-bundled + .form--element-bundled {
+    margin-top: 0;
+
+    .form--element-control {
+        border-top: 0;
+    }
+
+}
+
+
+// element-spefic rules
+
+.form--element-text {
+
+    display: block;
+
+    .form--element-label {
+        display: inline-block;
+        width: 6em;
+        margin-right: 2em;
+    }
+
+    .form--element-control {
+        max-width: 30em;
+        width: 100%;
+        display: inline-block;
+    }
+
+}
+
+.form--element-text-stacked {
+    .form--element-label {
+        display: block;
+        width: auto;
+        margin-right: 0;
+    }
+
+    .form--element-control {
+        max-width: 30em;
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+.form--element-textarea {
+    .form--element-label {
+        display: block;
+    }
+
+    .form--element-control {
+        max-width: 38em;
+        width: 100%;
+    }
+}
+
+.form--element-radio,
+.form--element-checkbox {
+    margin: 0.25em 0;
+
+    .form--element-control {
+        top: 3px;
+        left: 1px;
+        cursor: pointer;
+    }
+
+    .form--element-value {
+        color: $gray-dark;
+
+        &:hover {
+            cursor: pointer;
+
+            &:before {
+                border-color: $gray;
+            }
+        }
+
+        &:before {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 1.25em;
+            height: 1.25em;
+            margin-right: 0.75em;
+            border: 1px solid lighten($gray-light, 20%);
+            box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    .form--element-control:hover + .form--element-value {
+        &:before {
+            border-color: $gray;
+        }
+    }
+
+    .form--element-control:checked + .form--element-value {
+        &:before {
+            background-color: $blue;
+            border-color: $gray;
+            box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 1);
+        }
+    }
+
+    .form--element-control:focus + .form--element-value {
+        &:before {
+            border-color: $blue;
+        }
+    }
+}
+
+.form--element-radio .form--element-value:before {
+    border-radius: 50%;
+}
+
+.form--element-select {
+    .form--element-label {
+        display: inline-block;
+        width: 6em;
+    }
+
+    .form--element-control {
+        display: inline-block;
+        max-width: 20em;
+        width: 100%;
+        height: 2.5em;
+        margin-left: 2em;
+        line-height: 3em;
+        text-indent: 0.5em;
+        border: 1px solid $gray-lighter;
+        background-image: linear-gradient(to bottom, $white, $off-white);
+        box-shadow: 0, 1px, 2px, 0, rgba(0, 0, 0, 0.05);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .chosen-container {
+        margin-left: 2em;
+    }
+}
+
+.form--element-select-stacked {
+    .form--element-label {
+        display: block;
+        width: auto;
+    }
+
+    .form--element-control, .chosen-container {
+        margin-left: 0;
+    }
+}
+
+.form--element-teamselect {
+    .teamselect--dropdown {
+        display: none;
+        max-width: 20em;
+        width: 100%;
+        height: 2.5em;
+        line-height: 3em;
+        text-indent: 0.5em;
+        border: 1px solid $gray-lighter;
+        background-image: linear-gradient(to bottom, $white, $off-white);
+        box-shadow: 0, 1px, 2px, 0, rgba(0, 0, 0, 0.05);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .teamselect--text {
+        display: none;
+        max-width: 30em;
+        width: 100%;
+    }
+
+    .is-shown {
+        display: inline-block;
+    }
+}
+
+.form--element-slider {
+    .form--element-label {
+        display: block;
+        width: auto;
+    }
+
+    .form--element-control {
+        position: relative;
+        max-width: 50%;
+        width: 100%;
+
+        @include media(("<phone")) {
+            max-width: none;
+        }
+    }
+}
+
+// Grid Select
+.form--gridselect-header {
+    text-align: center;
+}
+
+.form--gridselect-row {
+    border-bottom: 1px solid $gray-lighter;
+
+    &.form--element-invalid {
+        background: lighten($red, 45%);
+
+        .form--gridselect-unclear {
+            background: lighten($red, 43%);
+        }
+    }
+}
+
+.form--gridselect-question {
+    text-align: left;
+    font-weight: 700;
+    max-width: 26em;
+    padding: 1em 0;
+}
+
+.form--gridselect-option {
+    position: relative;
+    text-align: center;
+
+    .form--element-value:before {
+        margin: 0;
+    }
+}
+
+.form--gridselect-unclear {
+    background: $off-white;
+
+    &.form--gridselect-header {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+}
+
+.form--gridselect {
+    .form--element-value {
+        line-height: 1.5em;
+        overflow: hidden;
+        width: 1.25em;
+        height: 1.5em;
+        display: inline-block;
+        color: transparent;
+
+        @include media(("<phone")) {
+            width: auto;
+            color: gray;
+            overflow: auto;
+
+            &::before {
+                margin-right: 0.75em;
+                margin-top: -0.2em;
+            }
+        }
+    }
+}
+
+.form--errors {
+    list-style-type: none;
+    color: $red;
+    margin: 0 0 1em;
+    background: rgba($red, 0.1);
+    border: 1px solid rgba($red, 0.15);
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    border-radius: 3px;
+}
+
+.form--success {
+    list-style-type: none;
+    color: $green;
+    margin: 0 0 1em;
+    background: rgba($green, 0.1);
+    border: 1px solid rgba($green, 0.15);
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    border-radius: 3px;
+}
+
+@include media(("<phone")) {
+    .form--gridselect {
+        thead {
+            display: none;
+        }
+
+        tr {
+            display: block;
+            padding-bottom: 1em;
+        }
+
+        td {
+            display: block;
+            text-align: left;
+        }
+    }
+}
+
+.button {
+    .form--element-checkbox {
+        width: auto;
+        margin: -0.5em 0 -0.5em -0.5em;
+
+        .form--element-value:hover::before,
+        .form--element-value:focus::before,
+        .form--element-control:focus + .form--element-value::before {
+            border: 1px solid lighten($gray-light, 10%) !important;
+        }
+    }
+}
+
+// Responsive rules
+
+@mixin mobile-form {
+
+    .form--element-label {
+        display: block;
+        width: auto;
+    }
+
+    .form--element-select {
+
+        .form--element-control {
+            margin-left: 0;
+        }
+
+    }
+
+}
+
+.card-third {
+    @include mobile-form();
+}
+
+@include media(("<phone")) {
+    @include mobile-form();
+}

@@ -1,0 +1,9 @@
+// apply a natural box layout model to all elements
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+// common variables
+$default-border-radius: 3px;

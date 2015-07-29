@@ -1,0 +1,56 @@
+mixin input-gridselect(header, options, fieldValues)
+    .form--area
+        span.form--element-label!= header
+        table.form--gridselect
+            thead
+                tr
+                    td
+                    td.form--gridselect-header Strongly Disagree
+                    td.form--gridselect-header Somewhat Disagree
+                    td.form--gridselect-header Neutral
+                    td.form--gridselect-header Somewhat Agree
+                    td.form--gridselect-header Strongly Agree
+                    td.form--gridselect-header.form--gridselect-unclear Question Unclear
+            tbody
+                - var n = 0
+                each title, key in options
+                    - n++
+                    if messages.error
+                        - errors = messages.error[0];
+                        if typeof errors[key] !== 'undefined'
+                            - error = errors[key]
+                        else
+                            - error = undefined
+                    tr.form--gridselect-row.form--area.form--area-stacked.form--element
+                        - radioValues = [0, 1, 2, 3, 4, -1]
+                        if typeof title !== 'string'
+                          - pn = ['positive', 'negative'][rng[n]]
+                          if pn === 'negative'
+                            - radioValues = [4, 3, 2, 1, 0, -1]
+                          - title = title[pn]
+                        td.form--gridselect-question
+                            span=title
+                            if error
+                                .form--area-errors
+                                    ul.form--element-invalid-message.filled
+                                        li.parsley-required= error
+                            else
+                                .form--area-errors
+                        td.form--element-radio.form--gridselect-option
+                            input(type="radio", name=key, value=radioValues[0], id=key + "v1", checked=((messages.field && messages.field[0][key] == radioValues[0]) || (fieldValues[key] == radioValues[0]) ? true : false))&attributes(attributes).form--element-control
+                            label(for=key + "v1").span.form--element-value Strongly Disagree
+                        td.form--element-radio.form--gridselect-option
+                            input(type="radio", name=key, value=radioValues[1], id=key + "v2", checked=((messages.field && messages.field[0][key] == radioValues[1]) || (fieldValues[key] == radioValues[1]) ? true : false))&attributes(attributes).form--element-control
+                            label(for=key + "v2").span.form--element-value Somewhat Disagree
+                        td.form--element-radio.form--gridselect-option
+                            input(type="radio", name=key, value=radioValues[2], id=key + "v3", checked=((messages.field && messages.field[0][key] == radioValues[2]) || (fieldValues[key] == radioValues[2]) ? true : false))&attributes(attributes).form--element-control
+                            label(for=key + "v3").span.form--element-value Neutral or Unsure
+                        td.form--element-radio.form--gridselect-option
+                            input(type="radio", name=key, value=radioValues[3], id=key + "v4", checked=((messages.field && messages.field[0][key] == radioValues[3]) || (fieldValues[key] == radioValues[3]) ? true : false))&attributes(attributes).form--element-control
+                            label(for=key + "v4").span.form--element-value Somewhat Agree
+                        td.form--element-radio.form--gridselect-option
+                            input(type="radio", name=key, value=radioValues[4], id=key + "v5", checked=((messages.field && messages.field[0][key] == radioValues[4]) || (fieldValues[key] == radioValues[4]) ? true : false))&attributes(attributes).form--element-control
+                            label(for=key + "v5").span.form--element-value Strongly Agree
+                        td.form--element-radio.form--gridselect-option.form--gridselect-unclear
+                            input(type="radio", name=key, value=radioValues[5], id=key + "v6", checked=((messages.field && messages.field[0][key] == radioValues[5]) || (fieldValues[key] == radioValues[5]) ? true : false))&attributes(attributes).form--element-control
+                            label(for=key + "v6").span.form--element-value Question Unclear
